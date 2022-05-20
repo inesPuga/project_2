@@ -21,6 +21,7 @@ public class LoginController {
     private PasswordField passwordField;
     @FXML
     private Label msgLabel;
+    private final UserSession userSession = UserSession.getInstance();
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - //
     // - - - - - - - - - - button clicks - - - - - - - - - - //
@@ -48,9 +49,10 @@ public class LoginController {
                 }
                 // - - - - manager menu - - - - //
                 if(user.getCargo().equals("G")) {
-                    Scene scene_menuManager = Logic.changePanel(event, "menuManager-view.fxml", "Conserveira", MenuManagerController.class);
+                    userSession.in(user);
+                    Logic.changePanel(event, "menuManager-view.fxml", "Conserveira", MenuManagerController.class);
                     // move the user to the next panel
-                    scene_menuManager.setUserData(user);
+                    //scene_menuManager.setUserData(user);
                 }
             }
         }

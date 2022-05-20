@@ -1,34 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.MenuManagerController">
    <children>
-      <TableView fx:id="users_table" layoutX="14.0" layoutY="89.0" prefHeight="210.0" prefWidth="311.0">
-         <columns>
-            <TableColumn fx:id="id_c" prefWidth="41.33334255218506" text="ID" />
-            <TableColumn fx:id="username_c" prefWidth="87.33333969116211" text="Data" />
-            <TableColumn fx:id="email_c" prefWidth="92.66665649414062" text="Preço " />
-            <TableColumn fx:id="name_c" prefWidth="88.66670227050781" text="Cliente" />
-         </columns>
-      </TableView>
-      <TableView fx:id="users_table1" layoutX="374.0" layoutY="89.0" prefHeight="210.0" prefWidth="311.0">
-         <columns>
-            <TableColumn fx:id="id_c1" prefWidth="32.66668701171875" text="ID" />
-            <TableColumn fx:id="username_c1" prefWidth="105.99996948242188" text="Nome" />
-            <TableColumn fx:id="email_c1" prefWidth="57.33331298828125" text="Preço " />
-            <TableColumn fx:id="name_c1" prefWidth="58.0" text="Stock" />
-            <TableColumn prefWidth="55.33336385091144" text="Peixe" />
-         </columns>
-      </TableView>
-      <Button layoutX="550.0" layoutY="311.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Criar tipo de conserva" />
-      <Button layoutX="374.0" layoutY="311.0" mnemonicParsing="false" prefWidth="136.0" text="Ver detalhes" />
-      <Button layoutX="14.0" layoutY="311.0" mnemonicParsing="false" prefWidth="136.0" text="Ver detalhes" />
-      <Label layoutX="14.0" layoutY="59.0" text="Encomendas" />
-      <Label layoutX="374.0" layoutY="59.0" text="Tipos de conserva" />
+      <Label fx:id="label_username" layoutX="595.0" layoutY="33.0" prefHeight="17.0" prefWidth="93.0" textAlignment="CENTER" />
+      <ImageView fx:id="back" fitHeight="17.0" fitWidth="15.0" layoutX="34.0" layoutY="34.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/arrow.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="user" fitHeight="22.0" fitWidth="22.0" layoutX="566.0" layoutY="31.0">
+         <image>
+            <Image url="@images/user.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuAdminController {
+public class MenuAdminController implements Initializable {
     //Utilizador user;
     Logic logic = new Logic();
     @FXML
@@ -37,8 +37,8 @@ public class MenuAdminController {
         Logic.changePanel(event, "list_users-view.fxml", "Conserveira", ListUsersController.class);
     }
 
-    public Utilizador getCurrentUser(javafx.event.ActionEvent event) {
-        return ((Utilizador) ((Scene)((Node) event.getSource()).getScene()).getUserData());
-    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
 }

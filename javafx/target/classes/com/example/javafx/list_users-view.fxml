@@ -9,17 +9,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ListUsersController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@style-view/list_users.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ListUsersController">
    <children>
-      <TableView fx:id="users_table" layoutX="3.0" layoutY="82.0" prefHeight="350.0" prefWidth="693.0">
+      <TableView fx:id="users_table" layoutX="9.0" layoutY="72.0" prefHeight="359.0" prefWidth="673.0">
         <columns>
-          <TableColumn fx:id="id_c" prefWidth="22.666687488555908" text="ID" />
-          <TableColumn fx:id="username_c" prefWidth="116.66665077209473" text="Nome de utilizador" />
-            <TableColumn fx:id="email_c" prefWidth="162.6667022705078" text="E-mail" />
-            <TableColumn fx:id="name_c" prefWidth="155.3333740234375" text="Nome" />
-            <TableColumn fx:id="phone_c" prefWidth="77.33328247070312" text="Contacto" />
-            <TableColumn fx:id="options_c" minWidth="0.0" prefWidth="98.66668701171875" text="Cargo" />
-            <TableColumn fx:id="status_c" prefWidth="62.0" text="Estado" />
+          <TableColumn fx:id="id_c" prefWidth="22.66665744781494" text="ID" />
+          <TableColumn fx:id="username_c" prefWidth="129.33333778381348" text="Nome de utilizador" />
+            <TableColumn fx:id="email_c" prefWidth="156.00001525878906" text="E-mail" />
+            <TableColumn fx:id="name_c" prefWidth="141.33331298828125" text="Nome" />
+            <TableColumn fx:id="phone_c" prefWidth="99.33334350585938" text="Contacto" />
+            <TableColumn fx:id="options_c" minWidth="0.0" prefWidth="60.66668701171875" text="Cargo" />
+            <TableColumn fx:id="status_c" prefWidth="45.33331298828125" text="Estado" />
         </columns>
       </TableView>
       <ImageView fx:id="add_user" fitHeight="25.0" fitWidth="25.0" layoutX="12.0" layoutY="447.0" onMouseClicked="#goToCreateUser">
@@ -43,8 +43,8 @@
             <Image url="@images/edit.png" />
          </image>
       </ImageView>
-      <Button onAction="#onEnableButtonClick" fx:id="enableButton" layoutX="534.0" layoutY="446.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Ativar" />
-      <Button onAction="#onDisableButtonClick" fx:id="disableButton" layoutX="616.0" layoutY="447.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Desativar" />
+      <Button fx:id="enableButton" layoutX="534.0" layoutY="446.0" mnemonicParsing="false" onAction="#onEnableButtonClick" prefHeight="25.0" prefWidth="69.0" stylesheets="@style-view/random.css" text="Ativar" />
+      <Button fx:id="disableButton" layoutX="616.0" layoutY="446.0" mnemonicParsing="false" onAction="#onDisableButtonClick" prefHeight="25.0" prefWidth="69.0" stylesheets="@style-view/random.css" text="Desativar" />
       <Label fx:id="infoLabel" layoutX="197.0" layoutY="450.0" prefHeight="17.0" prefWidth="197.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

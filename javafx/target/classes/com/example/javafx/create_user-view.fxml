@@ -36,7 +36,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></PasswordField>
-      <Button fx:id="button" layoutX="262.0" layoutY="434.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="35.0" prefWidth="195.0" style="-fx-background-color: #FF3E3E; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Criar conta" textFill="WHITE">
+      <Button fx:id="button" layoutX="262.0" layoutY="434.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="35.0" prefWidth="195.0" stylesheets="@style-view/random.css" text="Criar conta">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
