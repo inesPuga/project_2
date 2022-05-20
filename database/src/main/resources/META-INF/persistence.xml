@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+  <persistence-unit name="default">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <class>com.example.database.DAL.Cliente</class>
+    <class>com.example.database.DAL.Comprapeixe</class>
+    <class>com.example.database.DAL.Cpostal</class>
+    <class>com.example.database.DAL.Docqualidade</class>
+    <class>com.example.database.DAL.Encomenda</class>
+    <class>com.example.database.DAL.Estadoc</class>
+    <class>com.example.database.DAL.Estadocompra</class>
+    <class>com.example.database.DAL.Estadoe</class>
+    <class>com.example.database.DAL.Estadoencomenda</class>
+    <class>com.example.database.DAL.Gerente</class>
+    <class>com.example.database.DAL.Gestorcompras</class>
+    <class>com.example.database.DAL.Gestorstock</class>
+    <class>com.example.database.DAL.Gestorvendas</class>
+    <class>com.example.database.DAL.Lote</class>
+    <class>com.example.database.DAL.Nutriente</class>
+    <class>com.example.database.DAL.Peixe</class>
+    <class>com.example.database.DAL.Peixecomprapeixe</class>
+    <class>com.example.database.DAL.Peixedocqualidade</class>
+    <class>com.example.database.DAL.Peixerequisicao</class>
+    <class>com.example.database.DAL.Requisicao</class>
+    <class>com.example.database.DAL.Responsavelarmazem</class>
+    <class>com.example.database.DAL.Responsavelqualidade</class>
+    <class>com.example.database.DAL.Tipoconserva</class>
+    <class>com.example.database.DAL.Tipoconservaencomenda</class>
+    <class>com.example.database.DAL.Utilizador</class>
+    <class>com.example.database.DAL.Valornutricional</class>
+    <properties>
+      <property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:49677:XE"/>
+      <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.user" value="db"/>
+      <property name="javax.persistence.jdbc.password" value="ines"/>
+      <property name="javax.persistence.schema-generation.database.action" value="none"/>
+      <property name="hibernate.id.new_generator_mappings" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>
