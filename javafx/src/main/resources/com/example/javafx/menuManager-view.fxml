@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.MenuManagerController">
    <children>
-      <Label fx:id="label_hello" layoutX="236.0" layoutY="166.0" textAlignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
+      <TableView fx:id="users_table" layoutX="14.0" layoutY="89.0" prefHeight="210.0" prefWidth="311.0">
+         <columns>
+            <TableColumn fx:id="id_c" prefWidth="41.33334255218506" text="ID" />
+            <TableColumn fx:id="username_c" prefWidth="87.33333969116211" text="Data" />
+            <TableColumn fx:id="email_c" prefWidth="92.66665649414062" text="Preço " />
+            <TableColumn fx:id="name_c" prefWidth="88.66670227050781" text="Cliente" />
+         </columns>
+      </TableView>
+      <TableView fx:id="users_table1" layoutX="374.0" layoutY="89.0" prefHeight="210.0" prefWidth="311.0">
+         <columns>
+            <TableColumn fx:id="id_c1" prefWidth="32.66668701171875" text="ID" />
+            <TableColumn fx:id="username_c1" prefWidth="105.99996948242188" text="Nome" />
+            <TableColumn fx:id="email_c1" prefWidth="57.33331298828125" text="Preço " />
+            <TableColumn fx:id="name_c1" prefWidth="58.0" text="Stock" />
+            <TableColumn prefWidth="55.33336385091144" text="Peixe" />
+         </columns>
+      </TableView>
+      <Button layoutX="550.0" layoutY="311.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Criar tipo de conserva" />
+      <Button layoutX="374.0" layoutY="311.0" mnemonicParsing="false" prefWidth="136.0" text="Ver detalhes" />
+      <Button layoutX="14.0" layoutY="311.0" mnemonicParsing="false" prefWidth="136.0" text="Ver detalhes" />
+      <Label layoutX="14.0" layoutY="59.0" text="Encomendas" />
+      <Label layoutX="374.0" layoutY="59.0" text="Tipos de conserva" />
    </children>
 </AnchorPane>

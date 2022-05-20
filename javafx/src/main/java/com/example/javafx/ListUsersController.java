@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -131,7 +132,7 @@ public class ListUsersController implements Initializable {
             infoLabel.setText("Selecione um utilizador");
         }
         else {
-            infoLabel.setText(" ");
+            infoLabel.setText("");
             user_select.setStatus(1);
             UtilizadorBLL.update(user_select);
             //loadData();
