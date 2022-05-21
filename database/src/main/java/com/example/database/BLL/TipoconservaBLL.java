@@ -41,7 +41,7 @@ public class TipoconservaBLL {
         return listaTc;
     }
 
-    public static Tipoconserva readByCodpeixe(int codtipoconserva) {
+    public static Tipoconserva readByCodTipoConserva(int codtipoconserva) {
         Tipoconserva tc = null;
         if(factory == null)
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
@@ -61,7 +61,7 @@ public class TipoconservaBLL {
         return tc;
     }
 
-    public static Tipoconserva readByNome(int codpeixe) {
+    public static Tipoconserva readByCodPeixe(int codpeixe) {
         Tipoconserva tc = null;
         if(factory == null)
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);

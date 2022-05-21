@@ -1,8 +1,6 @@
 package com.example.database;
 
-import com.example.database.BLL.CPostalBLL;
-import com.example.database.BLL.LogicDataBase;
-import com.example.database.BLL.UtilizadorBLL;
+import com.example.database.BLL.*;
 import com.example.database.DAL.*;
 
 
@@ -23,5 +21,17 @@ public class main {
                 UtilizadorBLL.update(i);
             }
         }*/
+        /*Peixe p = new Peixe();
+        p.setNome("Sardinha");
+        p.setStock(500);
+        PeixeBLL.create(p);*/
+        /*Peixe p = PeixeBLL.readByCodpeixe(1);
+        Tipoconserva tp = new Tipoconserva();
+        tp.setCodpeixe(p.getCodpeixe());
+        tp.setDescricao("Sardinha com molho de tomate");
+        tp.setPrecoactvenda(2.99);
+        tp.setNome("Sardinha em conserva");
+        tp.setQtdstock(100);
+        TipoconservaBLL.create(tp);*/
     }
 }

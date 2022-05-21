@@ -21,7 +21,7 @@ public class Tipoconserva {
     private String nome;
     @Basic
     @Column(name = "PRECOACTVENDA")
-    private int precoactvenda;
+    private double precoactvenda;
     @Basic
     @Column(name = "DESCRICAO")
     private String descricao;
@@ -57,11 +57,11 @@ public class Tipoconserva {
         this.nome = nome;
     }
 
-    public int getPrecoactvenda() {
+    public double getPrecoactvenda() {
         return precoactvenda;
     }
 
-    public void setPrecoactvenda(int precoactvenda) {
+    public void setPrecoactvenda(double precoactvenda) {
         this.precoactvenda = precoactvenda;
     }
 
