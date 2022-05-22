@@ -57,7 +57,7 @@
 }
 
 .table-row-cell:focused {
-    -fx-background-color: #81c483;
-    -fx-background-radius: 15px;
+    -fx-background-color: #a1bfa9;
+    /*-fx-background-radius: 15px;*/
 }
 

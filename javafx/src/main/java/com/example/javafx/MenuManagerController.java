@@ -11,11 +11,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,6 +43,7 @@ public class MenuManagerController implements Initializable {
     @FXML
     private TableColumn<Tipoconserva, Integer> stock_c;
     private final UserSession userSession = UserSession.getInstance();
+    private final TypeCChangePanel typeCChangePanel = TypeCChangePanel.getInstance();
 
     public MenuManagerController() {}
 
@@ -50,6 +55,34 @@ public class MenuManagerController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();
         label_username.setText(getUsername().getUsername());
+        tpconservas_table.setEditable(true);
+        price_c.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        price_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Double>>() {
+            //@Override
+            public void handle(TableColumn.CellEditEvent<Tipoconserva, Double> event) {
+                Tipoconserva tpc = event.getRowValue();
+                tpc.setPrecoactvenda(event.getNewValue());
+                TipoconservaBLL.update(tpc);
+            }
+        });
+        name_c.setCellFactory(TextFieldTableCell.forTableColumn());
+        name_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, String>>() {
+            //@Override
+            public void handle(TableColumn.CellEditEvent<Tipoconserva, String> event) {
+                Tipoconserva tpc = event.getRowValue();
+                tpc.setNome(event.getNewValue());
+                TipoconservaBLL.update(tpc);
+            }
+        });
+    }
+
+    public void onAddButtonClick(javafx.event.Event event) throws IOException {
+        Logic.changePanel(event, "create_tp-view.fxml", "Conserveira", CreateTPController.class);
+    }
+
+    public void onEditButtonClick(javafx.event.Event event) throws IOException {
+        //typeCChangePanel.in(tp);
+        Logic.changePanel(event, "change_tp-view.fxml", "Conserveira", ChangeTPController.class);
     }
 
     public void backToLogin() {
