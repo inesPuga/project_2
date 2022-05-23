@@ -42,6 +42,7 @@
          </font>
       </Label>
       <Button layoutX="603.0" layoutY="375.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefWidth="79.0" stylesheets="@style-view/random.css" text="Adicionar" />
-      <Button onAction="#onEditButtonClick" layoutX="512.0" layoutY="375.0" mnemonicParsing="false" prefWidth="79.0" stylesheets="@style-view/random.css" text="Editar" />
+      <Button layoutX="512.0" layoutY="375.0" mnemonicParsing="false" onAction="#onEditButtonClick" prefWidth="79.0" stylesheets="@style-view/random.css" text="Editar" />
+      <Label fx:id="infoLabel" layoutX="305.0" layoutY="382.0" prefHeight="18.0" prefWidth="189.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -42,6 +42,8 @@ public class MenuManagerController implements Initializable {
     private TableColumn<Tipoconserva, Double> price_c;
     @FXML
     private TableColumn<Tipoconserva, Integer> stock_c;
+    @FXML
+    private Label infoLabel;
     private final UserSession userSession = UserSession.getInstance();
     private final TypeCChangePanel typeCChangePanel = TypeCChangePanel.getInstance();
 
@@ -81,8 +83,18 @@ public class MenuManagerController implements Initializable {
     }
 
     public void onEditButtonClick(javafx.event.Event event) throws IOException {
-        //typeCChangePanel.in(tp);
-        Logic.changePanel(event, "change_tp-view.fxml", "Conserveira", ChangeTPController.class);
+        Tipoconserva tp_select = tpconservas_table.getSelectionModel().getSelectedItem();
+        typeCChangePanel.in(tp_select);
+        if(tp_select == null) {
+            infoLabel.setText("Selecione um tipo de conserva");
+        }
+        else {
+            try {
+                Logic.changePanel(event, "change_tp-view.fxml", "Conserveira", ChangeTPController.class);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public void backToLogin() {

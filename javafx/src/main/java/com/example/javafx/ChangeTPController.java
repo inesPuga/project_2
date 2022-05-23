@@ -1,5 +1,6 @@
 package com.example.javafx;
 
+import com.example.database.DAL.Tipoconserva;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -16,7 +17,7 @@ public class ChangeTPController implements Initializable {
     private TextField stockf;
     @FXML
     private TextField descf;
-    private final UserSession userSession = UserSession.getInstance();
+    private final TypeCChangePanel typeCChangePanel = TypeCChangePanel.getInstance();
 
     public void onConfirmButtonClick() {
 
@@ -24,6 +25,10 @@ public class ChangeTPController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        Tipoconserva tp = typeCChangePanel.get();
+        namef.setText(tp.getNome());
+        pricef.setText(String.valueOf(tp.getPrecoactvenda()));
+        stockf.setText(String.valueOf(tp.getQtdstock()));
+        descf.setText(tp.getDescricao());
     }
 }

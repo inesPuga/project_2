@@ -117,10 +117,15 @@ public class ListUsersController implements Initializable {
             public void handle(Event event) {
                 Utilizador user_select = users_table.getSelectionModel().getSelectedItem();
                 userSession.in(user_select);
-                try {
-                    Logic.changePanel(event, "change_user-view.fxml", "Conserveira", EditUserController.class);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                if(user_select == null) {
+                    infoLabel.setText("Selecione um utilizador");
+                }
+                else {
+                    try {
+                        Logic.changePanel(event, "change_user-view.fxml", "Conserveira", EditUserController.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });
