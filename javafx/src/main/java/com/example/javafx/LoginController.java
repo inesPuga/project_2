@@ -43,14 +43,14 @@ public class LoginController {
             else {
                 // - - - - admin menu - - - - //
                 if(user.getCargo().equals("A")) {
-                    Scene scene_menuAdmin = Logic.changePanel(event, "list_users-view.fxml", "Conserveira", ListUsersController.class);
+                    Scene scene_menuAdmin = Logic.changePanel(event, "menu_manager-view.fxml", "Conserveira", ListUsersController.class);
                     // move the user to the next panel
                     scene_menuAdmin.setUserData(user);
                 }
                 // - - - - manager menu - - - - //
                 if(user.getCargo().equals("G")) {
                     userSession.in(user);
-                    Logic.changePanel(event, "menuManager-view.fxml", "Conserveira", MenuManagerController.class);
+                    Logic.changePanel(event, "menu_manager-view.fxml", "Conserveira", MenuManagerController.class);
                     // move the user to the next panel
                     //scene_menuManager.setUserData(user);
                 }

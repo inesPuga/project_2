@@ -1,10 +1,7 @@
 package com.example.javafx;
 
-import com.example.database.BLL.TipoconservaBLL;
-import com.example.database.BLL.UtilizadorBLL;
-import com.example.database.DAL.Peixe;
-import com.example.database.DAL.Tipoconserva;
-import com.example.database.DAL.Utilizador;
+import com.example.database.BLL.*;
+import com.example.database.DAL.*;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -44,6 +41,10 @@ public class MenuManagerController implements Initializable {
     private TableColumn<Tipoconserva, Integer> stock_c;
     @FXML
     private Label infoLabel;
+    @FXML
+    private Label label_countorder;
+    @FXML
+    private Label label_countemployees;
     private final UserSession userSession = UserSession.getInstance();
     private final TypeCChangePanel typeCChangePanel = TypeCChangePanel.getInstance();
 
@@ -76,6 +77,8 @@ public class MenuManagerController implements Initializable {
                 TipoconservaBLL.update(tpc);
             }
         });
+        label_countorder.setText(String.valueOf(countOrders()));
+        label_countemployees.setText(String.valueOf(countEmployees()));
     }
 
     public void onAddButtonClick(javafx.event.Event event) throws IOException {
@@ -110,8 +113,6 @@ public class MenuManagerController implements Initializable {
         });
     }
 
-
-
     public void loadData() {
         id_c.setCellValueFactory(new PropertyValueFactory<>("codtipoconserva"));
         fish_c.setCellValueFactory(new PropertyValueFactory<>("codpeixe"));
@@ -129,6 +130,22 @@ public class MenuManagerController implements Initializable {
             if(i.getStatus() == 1) status_c.setCellValueFactory(users_table -> new SimpleStringProperty("Ativo"));
             else status_c.setCellValueFactory(users_table -> new SimpleStringProperty("Desativo"));*/
         }
+    }
+
+    public int countOrders() {
+        int count = 0;
+        for(Encomenda orders : EncomendaBLL.readAll()) {
+            count++;
+        }
+        return count;
+    }
+
+    public int countEmployees() {
+        int count = 0;
+        count = GestorstockBLL.readAll().size() + GestorcomprasBLL.readAll().size() +
+                GestorvendasBLL.readAll().size() + ResponsavelArmazemBLL.readAll().size() +
+                ResponsavelQualidadeBLL.readAll().size();
+        return count;
     }
 
 }

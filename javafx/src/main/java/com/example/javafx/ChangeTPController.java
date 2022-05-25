@@ -19,8 +19,6 @@ public class ChangeTPController implements Initializable {
     @FXML
     private TextField pricef;
     @FXML
-    private TextField stockf;
-    @FXML
     private TextField descf;
     @FXML
     private ImageView back;
@@ -30,11 +28,11 @@ public class ChangeTPController implements Initializable {
         Tipoconserva tp = typeCChangePanel.get();
         tp.setNome(namef.getText());
         tp.setPrecoactvenda(Double.parseDouble(pricef.getText()));
-        tp.setQtdstock(Integer.parseInt(stockf.getText()));
+        //tp.setQtdstock(Integer.parseInt(stockf.getText()));
         tp.setDescricao(descf.getText());
         TipoconservaBLL.update(tp);
         try {
-            Logic.changePanel(event, "menuManager-view.fxml", "Conserveira", MenuManagerController.class);
+            Logic.changePanel(event, "menu_manager-view.fxml", "Conserveira", MenuManagerController.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -45,7 +43,7 @@ public class ChangeTPController implements Initializable {
             @Override
             public void handle(Event event) {
                 try {
-                    Logic.changePanel(event, "menuManager-view.fxml", "Conserveira", MenuManagerController.class);
+                    Logic.changePanel(event, "menu_manager-view.fxml", "Conserveira", MenuManagerController.class);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -58,7 +56,7 @@ public class ChangeTPController implements Initializable {
         Tipoconserva tp = typeCChangePanel.get();
         namef.setText(tp.getNome());
         pricef.setText(String.valueOf(tp.getPrecoactvenda()));
-        stockf.setText(String.valueOf(tp.getQtdstock()));
+        //stockf.setText(String.valueOf(tp.getQtdstock()));
         descf.setText(tp.getDescricao());
     }
 }

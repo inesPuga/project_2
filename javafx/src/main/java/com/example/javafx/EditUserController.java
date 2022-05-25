@@ -38,7 +38,7 @@ public class EditUserController implements Initializable {
         user.setUsername(username_field.getText());
         UtilizadorBLL.update(user);
         try {
-            Logic.changePanel(event, "list_users-view.fxml", "Conserveira", ListUsersController.class);
+            Logic.changePanel(event, "menu_manager-view.fxml", "Conserveira", ListUsersController.class);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
