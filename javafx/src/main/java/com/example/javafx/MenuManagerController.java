@@ -110,6 +110,8 @@ public class MenuManagerController implements Initializable {
         });
     }
 
+
+
     public void loadData() {
         id_c.setCellValueFactory(new PropertyValueFactory<>("codtipoconserva"));
         fish_c.setCellValueFactory(new PropertyValueFactory<>("codpeixe"));

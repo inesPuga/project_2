@@ -41,7 +41,9 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="603.0" layoutY="375.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefWidth="79.0" stylesheets="@style-view/random.css" text="Adicionar" />
-      <Button layoutX="512.0" layoutY="375.0" mnemonicParsing="false" prefWidth="79.0" stylesheets="@style-view/random.css" text="Editar" />
+      <Button layoutX="603.0" layoutY="375.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="31.0" prefWidth="79.0" stylesheets="@style-view/random.css" text="Adicionar" />
+      <Button layoutX="512.0" layoutY="375.0" mnemonicParsing="false" onAction="#onEditButtonClick" prefHeight="31.0" prefWidth="79.0" stylesheets="@style-view/random.css" text="Editar" />
+      <Label fx:id="infoLabel" layoutX="513.0" layoutY="419.0" prefHeight="18.0" prefWidth="167.0" textAlignment="CENTER" />
+      <Button layoutX="305.0" layoutY="375.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes" />
    </children>
 </AnchorPane>
