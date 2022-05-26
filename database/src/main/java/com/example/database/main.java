@@ -33,5 +33,8 @@ public class main {
         tp.setNome("Sardinha em conserva");
         tp.setQtdstock(100);
         TipoconservaBLL.create(tp);*/
+        Utilizador u = UtilizadorBLL.readById(21);
+        u.setCargo("GV");
+        UtilizadorBLL.update(u);
     }
 }

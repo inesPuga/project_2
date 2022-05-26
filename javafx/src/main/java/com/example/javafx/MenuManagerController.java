@@ -50,14 +50,14 @@ public class MenuManagerController implements Initializable {
 
     public MenuManagerController() {}
 
-    public Utilizador getUsername() {
+    public Utilizador getUser() {
         return userSession.get();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();
-        label_username.setText(getUsername().getUsername());
+        label_username.setText(getUser().getUsername());
         tpconservas_table.setEditable(true);
         price_c.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         price_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Double>>() {

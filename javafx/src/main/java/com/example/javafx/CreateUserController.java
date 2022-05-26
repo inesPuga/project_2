@@ -1,11 +1,9 @@
 package com.example.javafx;
 
-import com.example.database.BLL.GerenteBLL;
-import com.example.database.BLL.GestorcomprasBLL;
-import com.example.database.BLL.LogicDataBase;
-import com.example.database.BLL.UtilizadorBLL;
+import com.example.database.BLL.*;
 import com.example.database.DAL.Gerente;
 import com.example.database.DAL.Gestorcompras;
+import com.example.database.DAL.Gestorvendas;
 import com.example.database.DAL.Utilizador;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -70,7 +68,7 @@ public class CreateUserController implements Initializable {
             @Override
             public void handle(Event event) {
                 try {
-                    Logic.changePanel(event, "menu_manager-view.fxml", "Conserveira", ListUsersController.class);
+                    Logic.changePanel(event, "list_users-view.fxml", "Conserveira", ListUsersController.class);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -110,10 +108,27 @@ public class CreateUserController implements Initializable {
         }
         if("Gestor de Compras".equals(cb.getValue().toString())) {
             user.setCargo("GC");
-            UtilizadorBLL.create(user);
-            Gestorcompras gc = new Gestorcompras();
-            gc.setIduser(user.getIduser());
-            GestorcomprasBLL.create(gc);
+            if(UtilizadorBLL.checkUsername(user) == 0) {
+                label.setText("");
+                Gestorcompras gc = new Gestorcompras();
+                gc.setIduser(user.getIduser());
+                GestorcomprasBLL.create(gc);
+            }
+            else {
+                label.setText("Este nome de utilizador já existe");
+            }
+        }
+        if("Gestor de Vendas".equals(cb.getValue().toString())) {
+            user.setCargo("GS");
+            if(UtilizadorBLL.checkUsername(user) == 0) {
+                label.setText("");
+                Gestorvendas g = new Gestorvendas();
+                g.setIduser(user.getIduser());
+                GestorvendasBLL.create(g);
+            }
+            else {
+                label.setText("Este nome de utilizador já existe");
+            }
         }
     }
 
