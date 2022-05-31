@@ -2,14 +2,11 @@ package com.example.javafx;
 
 import com.example.database.DAL.Utilizador;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import com.example.database.BLL.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -44,7 +41,7 @@ public class LoginController {
                 // - - - - admin menu - - - - //
                 if(user.getCargo().equals("A")) {
                     //userSession.in(user);
-                    Scene scene_menuAdmin = Logic.changePanel(event, "list_users-view.fxml", "Conserveira", ListUsersController.class);
+                    Scene scene_menuAdmin = Logic.changePanel(event, "list_users.fxml", "Conserveira", ListUsersController.class);
                     // move the user to the next panel
                 }
                 // - - - - manager menu - - - - //
@@ -57,6 +54,12 @@ public class LoginController {
                 if(user.getCargo().equals("GV")) {
                     userSession.in(user);
                     Logic.changePanel(event, "menuSalesManager-view.fxml", "Conserveira", MenuSalesManagerController.class);
+                    // move the user to the next panel
+                    //scene_menuManager.setUserData(user);
+                }
+                if(user.getCargo().equals("GS")) {
+                    userSession.in(user);
+                    Logic.changePanel(event, "stock_manager-view.fxml", "Conserveira", StockManagerController.class);
                     // move the user to the next panel
                     //scene_menuManager.setUserData(user);
                 }

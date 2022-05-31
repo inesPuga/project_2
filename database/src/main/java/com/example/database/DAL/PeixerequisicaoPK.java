@@ -8,13 +8,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class PeixerequisicaoPK implements Serializable {
+    @Id
     @Column(name = "CODPEIXE")
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codpeixe;
-    @Column(name = "CODREQUISICAO")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CODREQUISICAO")
     private Integer codrequisicao;
 
     public Integer getCodpeixe() {

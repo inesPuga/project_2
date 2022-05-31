@@ -13,8 +13,8 @@
    <children>
       <TableView fx:id="users_table" layoutX="9.0" layoutY="72.0" prefHeight="359.0" prefWidth="673.0">
         <columns>
-          <TableColumn fx:id="id_c" prefWidth="22.66665744781494" text="ID" />
-          <TableColumn fx:id="username_c" prefWidth="129.33333778381348" text="Nome de utilizador" />
+          <TableColumn fx:id="id_c" prefWidth="27.999999046325684" text="ID" />
+          <TableColumn fx:id="username_c" prefWidth="124.66665267944336" text="Nome de utilizador" />
             <TableColumn fx:id="email_c" prefWidth="156.00001525878906" text="E-mail" />
             <TableColumn fx:id="name_c" prefWidth="141.33331298828125" text="Nome" />
             <TableColumn fx:id="phone_c" prefWidth="99.33334350585938" text="Contacto" />
@@ -43,8 +43,14 @@
             <Image url="@images/edit.png" />
          </image>
       </ImageView>
-      <Button fx:id="enableButton" layoutX="534.0" layoutY="446.0" mnemonicParsing="false" onAction="#onEnableButtonClick" prefHeight="25.0" prefWidth="69.0" stylesheets="@style-view/random.css" text="Ativar" />
-      <Button fx:id="disableButton" layoutX="616.0" layoutY="446.0" mnemonicParsing="false" onAction="#onDisableButtonClick" prefHeight="25.0" prefWidth="69.0" stylesheets="@style-view/random.css" text="Desativar" />
+      <Button fx:id="enableButton" layoutX="534.0" layoutY="446.0" mnemonicParsing="false" onAction="#onEnableButtonClick" prefHeight="25.0" prefWidth="69.0" stylesheets="@style-view/random.css" text="Ativar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="disableButton" layoutX="616.0" layoutY="446.0" mnemonicParsing="false" onAction="#onDisableButtonClick" prefHeight="25.0" prefWidth="69.0" stylesheets="@style-view/random.css" text="Desativar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <Label fx:id="infoLabel" layoutX="197.0" layoutY="450.0" prefHeight="17.0" prefWidth="197.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

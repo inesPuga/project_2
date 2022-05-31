@@ -33,8 +33,40 @@ public class main {
         tp.setNome("Sardinha em conserva");
         tp.setQtdstock(100);
         TipoconservaBLL.create(tp);*/
-        Utilizador u = UtilizadorBLL.readById(21);
-        u.setCargo("GV");
-        UtilizadorBLL.update(u);
+
+        /*Utilizador u = new Utilizador();
+        u.setUsername("luis");
+        u.setNome("Luís Camião");
+        u.setNumtel(912400588);
+        u.setStatus(1);
+        u.setPassword(LogicDataBase.passEncrypt("ola"));
+        u.setCargo("GS");
+        u.setEmail("luis@gmail.com");
+        UtilizadorBLL.create(u);
+        Gestorstock gs = new Gestorstock();
+        gs.setIduser(u.getIduser());
+        GestorstockBLL.create(gs);*/
+
+        /*for(Gestorstock i : GestorstockBLL.readAll()) {
+            if(i.getCodgs()==1) {
+                GestorstockBLL.delete(i);
+            }
+        }
+        for(Utilizador i : UtilizadorBLL.readAll()) {
+            if(i.getIduser()==41) {
+                UtilizadorBLL.delete(i);
+            }
+        }*/
+        Requisicao req = new Requisicao();
+        req.setData("30/05/2022");
+        req.setCodgs(2);
+        req.setQtdtotal(100);
+        RequisicaoBLL.create(req);
+        Peixerequisicao reqfish = new Peixerequisicao();
+        reqfish.setCodpeixe(1);
+        reqfish.setCodrequisicao(1);
+        reqfish.setQtd(2);
+        PeixerequisicaoBLL.create(reqfish);
+
     }
 }

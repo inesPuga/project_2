@@ -21,31 +21,15 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="tpconservas_table" layoutX="314.0" layoutY="169.0" prefHeight="202.0" prefWidth="377.0" stylesheets="@style-view/list_users.css">
+      <TableView fx:id="orders_table" layoutX="141.0" layoutY="118.0" prefHeight="263.0" prefWidth="448.0" stylesheets="@style-view/list_users.css">
          <columns>
-            <TableColumn fx:id="id_c" prefWidth="31.0" text="ID" />
-            <TableColumn fx:id="fish_c" prefWidth="83.0" text="Tipo de peixe" />
-            <TableColumn fx:id="name_c" prefWidth="147.0" text="Nome" />
-            <TableColumn fx:id="price_c" prefWidth="41.33331298828125" text="Preço" />
-            <TableColumn fx:id="stock_c" prefWidth="60.0" text="Stock" />
+            <TableColumn fx:id="id_c" prefWidth="57.333343505859375" text="ID" />
+            <TableColumn fx:id="data_c" prefWidth="121.99998474121094" text="Data" />
+            <TableColumn fx:id="price_c" prefWidth="126.6666259765625" text="Preço total" />
+            <TableColumn fx:id="idclient_c" prefWidth="127.99996948242188" text="Código do cliente" />
          </columns>
       </TableView>
-      <Label layoutX="324.0" layoutY="149.0" text="Tipos de conserva:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="315.0" layoutY="395.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="522.0" layoutY="395.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" stylesheets="@style-view/random.css" text="Editar">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="613.0" layoutY="395.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="79.0" stylesheets="@style-view/random.css" text="Adicionar">
+      <Button layoutX="487.0" layoutY="386.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -55,22 +39,7 @@
             <Image url="@images/user.png" />
          </image>
       </ImageView>
-      <Label layoutX="59.0" layoutY="149.0" text="Encomendas:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="label_countorder" layoutX="59.0" layoutY="136.0" prefHeight="123.0" prefWidth="131.0" textAlignment="CENTER">
-         <font>
-            <Font size="72.0" />
-         </font>
-      </Label>
-      <Button layoutX="59.0" layoutY="395.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Analisar">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Label fx:id="infoLabel" layoutX="533.0" layoutY="439.0" prefHeight="18.0" prefWidth="167.0" textAlignment="CENTER" />
+      <Label fx:id="infoLabel" layoutX="281.0" layoutY="402.0" prefHeight="18.0" prefWidth="167.0" textAlignment="CENTER" />
       <Label fx:id="label_username" layoutX="641.0" layoutY="41.0" prefHeight="18.0" prefWidth="71.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

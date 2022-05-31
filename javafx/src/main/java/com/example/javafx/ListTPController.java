@@ -1,7 +1,8 @@
 package com.example.javafx;
 
-import com.example.database.BLL.*;
-import com.example.database.DAL.*;
+import com.example.database.BLL.TipoconservaBLL;
+import com.example.database.DAL.Tipoconserva;
+import com.example.database.DAL.Utilizador;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,12 +14,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuManagerController implements Initializable {
+public class ListTPController implements Initializable {
     @FXML
     private Label label_username;
     @FXML
@@ -37,14 +39,7 @@ public class MenuManagerController implements Initializable {
     private TableColumn<Tipoconserva, Integer> stock_c;
     @FXML
     private Label infoLabel;
-    @FXML
-    private Label label_countorder;
-    @FXML
-    private Label label_countemployees;
     private final UserSession userSession = UserSession.getInstance();
-    private final TypeCChangePanel typeCChangePanel = TypeCChangePanel.getInstance();
-
-    public MenuManagerController() {}
 
     public Utilizador getUser() {
         return userSession.get();
@@ -55,45 +50,15 @@ public class MenuManagerController implements Initializable {
         loadData();
         label_username.setText(getUser().getUsername());
         tpconservas_table.setEditable(true);
-        price_c.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        price_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Double>>() {
+        stock_c.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        stock_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Integer>>() {
             //@Override
-            public void handle(TableColumn.CellEditEvent<Tipoconserva, Double> event) {
+            public void handle(TableColumn.CellEditEvent<Tipoconserva, Integer> event) {
                 Tipoconserva tpc = event.getRowValue();
-                tpc.setPrecoactvenda(event.getNewValue());
+                tpc.setQtdstock(event.getNewValue());
                 TipoconservaBLL.update(tpc);
             }
         });
-        name_c.setCellFactory(TextFieldTableCell.forTableColumn());
-        name_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, String>>() {
-            //@Override
-            public void handle(TableColumn.CellEditEvent<Tipoconserva, String> event) {
-                Tipoconserva tpc = event.getRowValue();
-                tpc.setNome(event.getNewValue());
-                TipoconservaBLL.update(tpc);
-            }
-        });
-        label_countorder.setText(String.valueOf(countOrders()));
-        label_countemployees.setText(String.valueOf(countEmployees()));
-    }
-
-    public void onAddButtonClick(javafx.event.Event event) throws IOException {
-        Logic.changePanel(event, "create_tp-view.fxml", "Conserveira", CreateTPController.class);
-    }
-
-    public void onEditButtonClick(javafx.event.Event event) throws IOException {
-        Tipoconserva tp_select = tpconservas_table.getSelectionModel().getSelectedItem();
-        typeCChangePanel.in(tp_select);
-        if(tp_select == null) {
-            infoLabel.setText("Selecione um tipo de conserva");
-        }
-        else {
-            try {
-                Logic.changePanel(event, "change_tp-view.fxml", "Conserveira", ChangeTPController.class);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
     }
 
     public void backToLogin() {
@@ -101,7 +66,7 @@ public class MenuManagerController implements Initializable {
             @Override
             public void handle(Event event) {
                 try {
-                    Logic.changePanel(event, "login-view.fxml", "Conserveira", LoginController.class);
+                    Logic.changePanel(event, "stock_manager-view.fxml", "Conserveira", StockManagerController.class);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -126,22 +91,6 @@ public class MenuManagerController implements Initializable {
             if(i.getStatus() == 1) status_c.setCellValueFactory(users_table -> new SimpleStringProperty("Ativo"));
             else status_c.setCellValueFactory(users_table -> new SimpleStringProperty("Desativo"));*/
         }
-    }
-
-    public int countOrders() {
-        int count = 0;
-        for(Encomenda orders : EncomendaBLL.readAll()) {
-            count++;
-        }
-        return count;
-    }
-
-    public int countEmployees() {
-        int count = 0;
-        count = GestorstockBLL.readAll().size() + GestorcomprasBLL.readAll().size() +
-                GestorvendasBLL.readAll().size() + ResponsavelArmazemBLL.readAll().size() +
-                ResponsavelQualidadeBLL.readAll().size();
-        return count;
     }
 
 }
