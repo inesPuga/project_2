@@ -37,34 +37,28 @@
          </font>
       </Button>
       <Label layoutX="109.0" layoutY="261.0" text="Tipos de conserva:" />
-      <Button onAction="#onActionListTypeOfPreserves" layoutX="223.0" layoutY="254.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Consultar">
+      <Button layoutX="223.0" layoutY="254.0" mnemonicParsing="false" onAction="#onActionListTypeOfPreserves" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Consultar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <Label layoutX="110.0" layoutY="316.0" text="Lotes:" />
-      <Button onAction="#onActionConferLots" layoutX="223.0" layoutY="309.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Consultar">
+      <Button layoutX="223.0" layoutY="309.0" mnemonicParsing="false" onAction="#onActionConferLots" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Consultar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="510.0" layoutY="199.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Analisar">
+      <Button layoutX="510.0" layoutY="199.0" mnemonicParsing="false" onAction="#onActionListEmployees" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Analisar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="510.0" layoutY="254.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Analisar">
+      <Button layoutX="510.0" layoutY="254.0" mnemonicParsing="false" onAction="#onActionListFish" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Listar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button onAction="#onActionListFish" layoutX="510.0" layoutY="309.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Listar">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Label layoutX="400.0" layoutY="316.0" text="Pescado:" />
+      <Label layoutX="400.0" layoutY="261.0" text="Pescado:" />
       <Label layoutX="400.0" layoutY="206.0" text="Funcionários:" />
-      <Label layoutX="400.0" layoutY="261.0" text="Encomendas:" />
    </children>
 </AnchorPane>

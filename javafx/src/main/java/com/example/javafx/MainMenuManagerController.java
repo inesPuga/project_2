@@ -57,4 +57,8 @@ public class MainMenuManagerController implements Initializable {
         Logic.changePanel(event, "confer_lots-view.fxml", "Conserveira", ConferLotsController.class);
     }
 
+    public void onActionListEmployees(javafx.event.Event event) throws IOException {
+        Logic.changePanel(event, "list_employees-view.fxml", "Conserveira", ListEmployeesController.class);
+    }
+
 }
