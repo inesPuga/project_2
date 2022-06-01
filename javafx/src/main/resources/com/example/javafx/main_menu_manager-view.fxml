@@ -43,7 +43,7 @@
          </font>
       </Button>
       <Label layoutX="110.0" layoutY="316.0" text="Lotes:" />
-      <Button layoutX="223.0" layoutY="309.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Consultar">
+      <Button onAction="#onActionConferLots" layoutX="223.0" layoutY="309.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Consultar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

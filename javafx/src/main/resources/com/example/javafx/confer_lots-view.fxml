@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ConferLotsController">
+   <children>
+      <TableView fx:id="lots_table" layoutX="211.0" layoutY="118.0" prefHeight="263.0" prefWidth="448.0" stylesheets="@style-view/list_users.css">
+         <columns>
+            <TableColumn fx:id="id_c" prefWidth="47.99999237060547" text="ID" />
+            <TableColumn fx:id="codlot_c" prefWidth="119.33331298828125" text="Tipo de conserva" />
+            <TableColumn fx:id="proddate_c" prefWidth="119.3333740234375" text="Data de produção" />
+            <TableColumn fx:id="expirationdate_c" prefWidth="147.33328247070312" text="Data de validade" />
+         </columns>
+      </TableView>
+      <Label layoutX="110.0" layoutY="44.0" text="LISTAR TIPOS DE CONSERVA" textFill="#5f5f5f">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="back" fitHeight="17.0" fitWidth="15.0" layoutX="54.0" layoutY="54.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/arrow.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="557.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="37.0" layoutY="118.0" text="Criar lote:" textFill="#5f5f5f">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="proddatef" layoutX="36.0" layoutY="203.0" prefHeight="28.0" prefWidth="168.0" promptText="Data de produção" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="expirationdatef" layoutX="36.0" layoutY="257.0" prefHeight="28.0" prefWidth="168.0" promptText="Data de validade" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="cb" layoutX="36.0" layoutY="310.0" prefHeight="28.0" prefWidth="168.0" promptText="Tipo de conserva" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" />
+      <Button layoutX="36.0" layoutY="390.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="31.0" prefWidth="77.0" stylesheets="@style-view/random.css" text="Criar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="label_info" layoutX="129.0" layoutY="397.0" prefHeight="17.0" prefWidth="177.0" />
+   </children>
+</AnchorPane>

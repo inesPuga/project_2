@@ -23,7 +23,7 @@ public class Lote {
     private String dtvalidade;
     @Basic
     @Column(name = "CODTIPOCONSERVA")
-    private short codtipoconserva;
+    private int codtipoconserva;
     @ManyToOne
     @JoinColumn(name = "CODTIPOCONSERVA", referencedColumnName = "CODTIPOCONSERVA", insertable = false, nullable = false, updatable = false)
     private Tipoconserva tipoconservaByCodtipoconserva;
@@ -52,11 +52,11 @@ public class Lote {
         this.dtvalidade = dtvalidade;
     }
 
-    public short getCodtipoconserva() {
+    public int getCodtipoconserva() {
         return codtipoconserva;
     }
 
-    public void setCodtipoconserva(short codtipoconserva) {
+    public void setCodtipoconserva(int codtipoconserva) {
         this.codtipoconserva = codtipoconserva;
     }
 

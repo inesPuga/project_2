@@ -53,4 +53,8 @@ public class MainMenuManagerController implements Initializable {
         Logic.changePanel(event, "list_fish-view.fxml", "Conserveira", ListFishController.class);
     }
 
+    public void onActionConferLots(javafx.event.Event event) throws IOException {
+        Logic.changePanel(event, "confer_lots-view.fxml", "Conserveira", ConferLotsController.class);
+    }
+
 }

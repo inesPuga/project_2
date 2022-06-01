@@ -127,10 +127,6 @@ public class ConferTypeOfPreservesController implements Initializable {
         });
     }
 
-    public void onUpdateButtonClick() {
-        tpconservas_table.refresh();
-    }
-
     public void loadData() {
         ObservableList<Tipoconserva> list = FXCollections.observableArrayList(TipoconservaBLL.readAll());
         id_c.setCellValueFactory(new PropertyValueFactory<>("codtipoconserva"));
@@ -138,9 +134,6 @@ public class ConferTypeOfPreservesController implements Initializable {
         price_c.setCellValueFactory(new PropertyValueFactory<>("precoactvenda"));
         name_c.setCellValueFactory(new PropertyValueFactory<>("nome"));
         stock_c.setCellValueFactory(new PropertyValueFactory<>("qtdstock"));
-        /*for(Tipoconserva i : TipoconservaBLL.readAll()) {
-            tpconservas_table.getItems().add(i);
-        }*/
         tpconservas_table.setItems(list);
     }
 
