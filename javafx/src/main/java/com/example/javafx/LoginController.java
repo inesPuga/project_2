@@ -47,7 +47,7 @@ public class LoginController {
                 // - - - - manager menu - - - - //
                 if(user.getCargo().equals("G")) {
                     userSession.in(user);
-                    Logic.changePanel(event, "menu_manager-view.fxml", "Conserveira", MenuManagerController.class);
+                    Logic.changePanel(event, "main_menu_manager-view.fxml", "Conserveira", MainMenuManagerController.class);
                     // move the user to the next panel
                     //scene_menuManager.setUserData(user);
                 }
