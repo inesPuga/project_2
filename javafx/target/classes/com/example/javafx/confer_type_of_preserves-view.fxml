@@ -22,7 +22,7 @@
             <TableColumn fx:id="stock_c" prefWidth="87.33328247070312" text="Stock" />
          </columns>
       </TableView>
-      <Label layoutX="110.0" layoutY="44.0" text="LISTAR TIPOS DE CONSERVA" textFill="#5f5f5f">
+      <Label layoutX="110.0" layoutY="44.0" text="CONSULTAR TIPOS DE CONSERVA" textFill="#5f5f5f">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
