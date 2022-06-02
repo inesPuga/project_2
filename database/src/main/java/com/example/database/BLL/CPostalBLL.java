@@ -22,8 +22,11 @@ public class CPostalBLL {
         if (em == null) em = factory.createEntityManager();
 
         em.getTransaction().begin();
+        System.out.println(cp.getCodpostal());
         em.persist(cp);
+        System.out.println("persisted");
         em.getTransaction().commit();
+        System.out.println("commited");
     }
 
     public static List<Cpostal> readAll(){

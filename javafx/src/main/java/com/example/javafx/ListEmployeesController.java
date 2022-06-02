@@ -67,22 +67,14 @@ public class ListEmployeesController implements Initializable {
         nphone_c.setCellValueFactory(new PropertyValueFactory<>("numtel"));
         role_c.setCellValueFactory(new PropertyValueFactory<>("cargo"));
         employees_table.setItems(obsList);
-        /*name_c.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        email_c.setCellValueFactory(new PropertyValueFactory<>("email"));
-        nphone_c.setCellValueFactory(new PropertyValueFactory<>("numtel"));
-        role_c.setCellValueFactory(new PropertyValueFactory<>("cargo"));
-        for(Utilizador i : UtilizadorBLL.readAll()) {
-            if(!i.getCargo().equals("A")) {
-                if(i.getStatus()==1) {
-                    employees_table.getItems().add(i);
-                }
-            }
-        }*/
     }
 
     public void onClickSearchButton() {
         String search_str = search.getText();
-        loadData(searchEngine(search_str));
+        if(search_str.isBlank()) {
+            loadData(listUsers());
+        }
+        else loadData(searchEngine(search_str));
     }
 
     public List<Utilizador> listUsers() {

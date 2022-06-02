@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ListOrdersController">
    <children>
       <Label layoutX="110.0" layoutY="44.0" text="LISTAR ENCOMENDAS" textFill="#5f5f5f">
@@ -30,10 +29,11 @@
             <TableColumn fx:id="idclient_c" prefWidth="127.99996948242188" text="Código do cliente" />
          </columns>
       </TableView>
-      <Button layoutX="472.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
+      <Button onAction="#viewDetails" layoutX="472.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Label fx:id="label_info" layoutX="126.0" layoutY="397.0" prefHeight="17.0" prefWidth="165.0" />
    </children>
 </AnchorPane>

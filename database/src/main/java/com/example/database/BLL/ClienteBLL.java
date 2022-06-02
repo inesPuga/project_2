@@ -24,7 +24,11 @@ public class ClienteBLL {
 
         em.getTransaction().begin();
         em.persist(cli);
+        System.out.println(cli.getIduser());
         em.getTransaction().commit();
+        if(em!=null) {
+            em.close();
+        }
     }
 
     //read clients

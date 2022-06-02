@@ -1,10 +1,7 @@
 package com.example.javafx;
 
 import com.example.database.BLL.*;
-import com.example.database.DAL.Gerente;
-import com.example.database.DAL.Gestorcompras;
-import com.example.database.DAL.Gestorvendas;
-import com.example.database.DAL.Utilizador;
+import com.example.database.DAL.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -119,7 +116,7 @@ public class CreateUserController implements Initializable {
             }
         }
         if("Gestor de Vendas".equals(cb.getValue().toString())) {
-            user.setCargo("GS");
+            user.setCargo("GV");
             if(UtilizadorBLL.checkUsername(user) == 0) {
                 label.setText("");
                 Gestorvendas g = new Gestorvendas();
@@ -130,6 +127,31 @@ public class CreateUserController implements Initializable {
                 label.setText("Este nome de utilizador já existe");
             }
         }
+        if("Gestor de Stock".equals(cb.getValue().toString())) {
+            user.setCargo("GS");
+            if(UtilizadorBLL.checkUsername(user) == 0) {
+                label.setText("");
+                Gestorstock g = new Gestorstock();
+                g.setIduser(user.getIduser());
+                GestorstockBLL.create(g);
+            }
+            else {
+                label.setText("Este nome de utilizador já existe");
+            }
+        }
+        if("Cliente".equals(cb.getValue().toString())) {
+            user.setCargo("C");
+            if(UtilizadorBLL.checkUsername(user) == 0) {
+                label.setText("");
+                Cliente c = new Cliente();
+                c.setIduser(user.getIduser());
+                ClienteBLL.create(c);
+            }
+            else {
+                label.setText("Este nome de utilizador já existe");
+            }
+        }
+
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
@@ -144,6 +166,7 @@ public class CreateUserController implements Initializable {
         TypeUsers typeUsers5 = new TypeUsers(5, "Gestor de Vendas");
         TypeUsers typeUsers6 = new TypeUsers(6, "Responsável pelo Armazém");
         TypeUsers typeUsers7 = new TypeUsers(7, "Responsável pela Qualidade");
+        TypeUsers typeUsers8 = new TypeUsers(8, "Cliente");
         // - - - - sum items in list - - - - //
         typeUsersList.add(typeUsers1);
         typeUsersList.add(typeUsers2);
@@ -152,6 +175,7 @@ public class CreateUserController implements Initializable {
         typeUsersList.add(typeUsers5);
         typeUsersList.add(typeUsers6);
         typeUsersList.add(typeUsers7);
+        typeUsersList.add(typeUsers8);
 
         obsList = FXCollections.observableArrayList(typeUsersList);
 

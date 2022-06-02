@@ -1,12 +1,14 @@
 package com.example.javafx;
 
 import com.example.database.BLL.EncomendaBLL;
+import com.example.database.BLL.UtilizadorBLL;
 import com.example.database.DAL.Encomenda;
 import com.example.database.DAL.Utilizador;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -30,7 +32,10 @@ public class ListOrdersController implements Initializable {
     private TableColumn<Encomenda, Double> price_c;
     @FXML
     private TableColumn<Encomenda, Integer> idclient_c;
+    @FXML
+    private Label label_info;
     private final UserSession userSession = UserSession.getInstance();
+    private final DataOrder dataOrder = DataOrder.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,6 +57,18 @@ public class ListOrdersController implements Initializable {
                 }
             }
         });
+    }
+
+    public void viewDetails(javafx.event.Event event) throws IOException {
+        Encomenda order_select = orders_table.getSelectionModel().getSelectedItem();
+        if(order_select == null) {
+            label_info.setText("Selecione uma encomenda");
+        }
+        else {
+            label_info.setText("");
+            dataOrder.in(order_select);
+            Logic.changePanel(event, "view_details_order-view.fxml", "Conserveira", ViewDetailsOrderController.class);
+        }
     }
 
     public void loadData() {

@@ -22,7 +22,7 @@ public class Cliente {
     private String nomerua;
     @Basic
     @Column(name = "NUMPORTA")
-    private short numporta;
+    private int numporta;
     @Basic
     @Column(name = "NUMCC")
     private int numcc;
@@ -63,11 +63,11 @@ public class Cliente {
         this.nomerua = nomerua;
     }
 
-    public short getNumporta() {
+    public int getNumporta() {
         return numporta;
     }
 
-    public void setNumporta(short numporta) {
+    public void setNumporta(int numporta) {
         this.numporta = numporta;
     }
 

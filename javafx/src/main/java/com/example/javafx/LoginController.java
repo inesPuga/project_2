@@ -40,8 +40,8 @@ public class LoginController {
             else {
                 // - - - - admin menu - - - - //
                 if(user.getCargo().equals("A")) {
-                    //userSession.in(user);
-                    Scene scene_menuAdmin = Logic.changePanel(event, "list_users.fxml", "Conserveira", ListUsersController.class);
+                    userSession.in(user);
+                    Logic.changePanel(event, "menu_admin-view.fxml", "Conserveira", MenuAdminController.class);
                     // move the user to the next panel
                 }
                 // - - - - manager menu - - - - //

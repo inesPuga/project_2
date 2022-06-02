@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ViewDetailsOrderController">
+   <children>
+      <Label layoutX="110.0" layoutY="44.0" text="VER DETALHES" textFill="#5f5f5f">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="back" fitHeight="17.0" fitWidth="15.0" layoutX="54.0" layoutY="54.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/arrow.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="110.0" layoutY="127.0" text="Código da Encomenda:" textFill="#5f5f5f">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="idorder" layoutX="266.0" layoutY="129.0" prefHeight="17.0" prefWidth="151.0" />
+      <Label layoutX="110.0" layoutY="166.0" text="Cliente:" textFill="#5f5f5f">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="name" layoutX="166.0" layoutY="167.0" prefHeight="17.0" prefWidth="151.0" />
+      <Label layoutX="110.0" layoutY="209.0" text="Data:" textFill="#5f5f5f">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="date" layoutX="152.0" layoutY="210.0" prefHeight="17.0" prefWidth="151.0" />
+      <Label layoutX="110.0" layoutY="250.0" text="Preço:" textFill="#5f5f5f">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="price" layoutX="160.0" layoutY="251.0" prefHeight="17.0" prefWidth="151.0" />
+      <TableView fx:id="state_table" layoutX="357.0" layoutY="126.0" prefHeight="144.0" prefWidth="227.0" stylesheets="@style-view/list_users.css">
+         <columns>
+            <TableColumn fx:id="id_c" prefWidth="108.0" text="Estado" />
+            <TableColumn fx:id="codlot_c" prefWidth="103.3333740234375" text="Data" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

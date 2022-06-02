@@ -17,7 +17,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <Button onAction="#onClickSearchButton" fx:id="search_button" layoutX="263.0" layoutY="104.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="73.0" stylesheets="@style-view/random.css" text="Pesquisar">
+      <Button fx:id="search_button" layoutX="263.0" layoutY="104.0" mnemonicParsing="false" onAction="#onClickSearchButton" prefHeight="28.0" prefWidth="73.0" stylesheets="@style-view/random.css" text="Pesquisar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
