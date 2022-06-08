@@ -38,7 +38,7 @@ public class StateOrderController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        loadData();
     }
 
     public void loadData() {

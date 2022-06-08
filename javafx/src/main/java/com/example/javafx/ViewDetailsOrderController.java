@@ -1,10 +1,11 @@
 package com.example.javafx;
 
-import com.example.database.BLL.EncomendaBLL;
 import com.example.database.BLL.EstadoeBLL;
 import com.example.database.BLL.EstadoencomendaBLL;
+import com.example.database.BLL.LoteBLL;
 import com.example.database.BLL.UtilizadorBLL;
 import com.example.database.DAL.*;
+import com.example.javafx.tables.OrderState;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
@@ -52,6 +54,25 @@ public class ViewDetailsOrderController implements Initializable {
         date.setText(getDataOrder().getData());
         price.setText(String.valueOf(getDataOrder().getPrecototal()));
         loadData(orderstate());
+        state_table.setEditable(true);
+        date_c.setCellFactory(TextFieldTableCell.forTableColumn());
+        date_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<OrderState, String>>() {
+            //@Override
+            public void handle(TableColumn.CellEditEvent<OrderState, String> event) {
+                OrderState os = event.getRowValue();
+                os.setDesc(event.getNewValue());
+                for(Estadoencomenda i : EstadoencomendaBLL.readAll()) {
+                    if(i.getCodencomenda() == getDataOrder().getCodencomenda()) {
+                        for(Estadoe j : EstadoeBLL.readAll()) {
+                            if(j.getIde() == i.getIde()) {
+                                i.setDtee(event.getNewValue());
+                                EstadoencomendaBLL.update(i);
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     public Utilizador searchUser(int id) {
@@ -80,31 +101,13 @@ public class ViewDetailsOrderController implements Initializable {
         });
     }
 
-    public Estadoencomenda returnStateOrder() {
-        for(Estadoencomenda i : EstadoencomendaBLL.readAll()) {
-            if(i.getCodencomenda() == getDataOrder().getCodencomenda()) {
-                return i;
-            }
-        }
-        return null;
-    }
-
-    public Estadoe returnStateDesc(Estadoencomenda stateorder) {
-        for(Estadoe i : EstadoeBLL.readAll()) {
-            if(i.getIde() == stateorder.getIde()) {
-                return i;
-            }
-        }
-        return null;
-    }
-
     public List<OrderState> orderstate() {
         OrderState orderState = new OrderState();
         List<OrderState> list = new ArrayList<>();
         for(Estadoencomenda i : EstadoencomendaBLL.readAll()) {
             if(i.getCodencomenda() == getDataOrder().getCodencomenda()) {
                 for(Estadoe j : EstadoeBLL.readAll()) {
-                    if(i.getIde() == i.getIde()) {
+                    if(j.getIde() == i.getIde()) {
                         orderState.setIdorder(i.getCodencomenda());
                         orderState.setIdstate(j.getIde());
                         orderState.setDate(i.getDtee());
@@ -119,8 +122,8 @@ public class ViewDetailsOrderController implements Initializable {
 
     public void loadData(List<OrderState> list) {
         ObservableList<OrderState> obsList = FXCollections.observableArrayList(list);
-        state_c.setCellValueFactory(new PropertyValueFactory<>("date"));
-        date_c.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        state_c.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        date_c.setCellValueFactory(new PropertyValueFactory<>("date"));
         state_table.setItems(obsList);
     }
 

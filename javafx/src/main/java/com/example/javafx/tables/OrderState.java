@@ -1,4 +1,4 @@
-package com.example.javafx;
+package com.example.javafx.tables;
 
 public class OrderState {
     String desc;

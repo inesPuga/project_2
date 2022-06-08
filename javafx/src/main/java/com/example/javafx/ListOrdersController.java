@@ -1,9 +1,13 @@
 package com.example.javafx;
 
 import com.example.database.BLL.EncomendaBLL;
+import com.example.database.BLL.LoteBLL;
 import com.example.database.BLL.UtilizadorBLL;
 import com.example.database.DAL.Encomenda;
+import com.example.database.DAL.Lote;
 import com.example.database.DAL.Utilizador;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -34,7 +38,7 @@ public class ListOrdersController implements Initializable {
     private TableColumn<Encomenda, Integer> idclient_c;
     @FXML
     private Label label_info;
-    private final UserSession userSession = UserSession.getInstance();
+    //private final UserSession userSession = UserSession.getInstance();
     private final DataOrder dataOrder = DataOrder.getInstance();
 
     @Override
@@ -42,9 +46,6 @@ public class ListOrdersController implements Initializable {
         loadData();
     }
 
-    public Utilizador getUser() {
-        return userSession.get();
-    }
 
     public void backToLogin() {
         back.setOnMouseClicked(new EventHandler() {
@@ -72,13 +73,14 @@ public class ListOrdersController implements Initializable {
     }
 
     public void loadData() {
+        ObservableList<Encomenda> list = FXCollections.observableArrayList(EncomendaBLL.readAll());
         id_c.setCellValueFactory(new PropertyValueFactory<>("codencomenda"));
         data_c.setCellValueFactory(new PropertyValueFactory<>("data"));
         price_c.setCellValueFactory(new PropertyValueFactory<>("precototal"));
         idclient_c.setCellValueFactory(new PropertyValueFactory<>("codcliente"));
-        for(Encomenda i : EncomendaBLL.readAll()) {
-            orders_table.getItems().add(i);
-        }
+        //for(Encomenda i : EncomendaBLL.readAll()) {
+        orders_table.setItems(list);
+        //}
     }
 
 }

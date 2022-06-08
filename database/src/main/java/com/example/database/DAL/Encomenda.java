@@ -70,12 +70,12 @@ public class Encomenda {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Encomenda encomenda = (Encomenda) o;
-        return precototal == encomenda.precototal && codcliente == encomenda.codcliente && Objects.equals(codencomenda, encomenda.codencomenda);
+        return precototal == encomenda.precototal && codcliente == encomenda.codcliente && Objects.equals(codencomenda, encomenda.codencomenda) && Objects.equals(data, encomenda.data);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codencomenda, precototal, codcliente);
+        return Objects.hash(codencomenda, precototal, codcliente, data);
     }
 
     public Cliente getClienteByCodcliente() {

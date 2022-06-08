@@ -1,11 +1,15 @@
 package com.example.javafx;
 
-import com.example.database.BLL.TipoconservaBLL;
-import com.example.database.DAL.Tipoconserva;
+import com.example.database.BLL.*;
+import com.example.database.DAL.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -59,4 +63,5 @@ public class ChangeTPController implements Initializable {
         //stockf.setText(String.valueOf(tp.getQtdstock()));
         descf.setText(tp.getDescricao());
     }
+
 }

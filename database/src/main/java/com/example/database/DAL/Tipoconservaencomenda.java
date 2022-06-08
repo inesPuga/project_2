@@ -22,12 +22,6 @@ public class Tipoconservaencomenda {
     @Basic
     @Column(name = "QTD")
     private int qtd;
-    @Basic
-    @Column(name = "PRECOUND")
-    private int precound;
-    @Basic
-    @Column(name = "PRECOCALCULADO")
-    private double precocalculado;
     @ManyToOne
     @JoinColumn(name = "CODTIPOCONSERVA", referencedColumnName = "CODTIPOCONSERVA", insertable = false, nullable = false, updatable = false)
     private Tipoconserva tipoconservaByCodtipoconserva;
@@ -59,33 +53,17 @@ public class Tipoconservaencomenda {
         this.qtd = qtd;
     }
 
-    public int getPrecound() {
-        return precound;
-    }
-
-    public void setPrecound(int precound) {
-        this.precound = precound;
-    }
-
-    public double getPrecocalculado() {
-        return precocalculado;
-    }
-
-    public void setPrecocalculado(double precocalculado) {
-        this.precocalculado = precocalculado;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tipoconservaencomenda that = (Tipoconservaencomenda) o;
-        return qtd == that.qtd && precound == that.precound && precocalculado == that.precocalculado && Objects.equals(codtipoconserva, that.codtipoconserva) && Objects.equals(codencomenda, that.codencomenda);
+        return qtd == that.qtd && Objects.equals(codtipoconserva, that.codtipoconserva) && Objects.equals(codencomenda, that.codencomenda);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codtipoconserva, codencomenda, qtd, precound, precocalculado);
+        return Objects.hash(codtipoconserva, codencomenda, qtd);
     }
 
     public Tipoconserva getTipoconservaByCodtipoconserva() {

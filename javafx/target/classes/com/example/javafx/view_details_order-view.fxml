@@ -44,10 +44,10 @@
          </font>
       </Label>
       <Label fx:id="price" layoutX="160.0" layoutY="251.0" prefHeight="17.0" prefWidth="151.0" />
-      <TableView fx:id="state_table" layoutX="357.0" layoutY="126.0" prefHeight="144.0" prefWidth="227.0" stylesheets="@style-view/list_users.css">
+      <TableView fx:id="state_table" layoutX="357.0" layoutY="126.0" prefHeight="144.0" prefWidth="254.0" stylesheets="@style-view/list_users.css">
          <columns>
-            <TableColumn fx:id="id_c" prefWidth="108.0" text="Estado" />
-            <TableColumn fx:id="codlot_c" prefWidth="103.3333740234375" text="Data" />
+            <TableColumn fx:id="state_c" prefWidth="138.0" text="Estado" />
+            <TableColumn fx:id="date_c" prefWidth="99.33328247070312" text="Data" />
          </columns>
       </TableView>
    </children>

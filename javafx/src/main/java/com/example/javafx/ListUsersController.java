@@ -90,7 +90,7 @@ public class ListUsersController implements Initializable {
             @Override
             public void handle(Event event) {
                 try {
-                    Logic.changePanel(event, "login-view.fxml", "Conserveira", LoginController.class);
+                    Logic.changePanel(event, "menu_admin-view.fxml", "Conserveira", MenuAdminController.class);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
