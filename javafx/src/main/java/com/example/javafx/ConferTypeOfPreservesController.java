@@ -11,18 +11,22 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ConferTypeOfPreservesController implements Initializable {
+    @FXML private ImageView imageView;
     @FXML
     private ImageView back;
     @FXML
@@ -50,6 +54,9 @@ public class ConferTypeOfPreservesController implements Initializable {
     @FXML
     private Label label_info;
     private ObservableList<Peixe> obsList;
+
+    private Tipoconserva tp = new Tipoconserva();
+
     private final UserSession userSession = UserSession.getInstance();
 
     @Override
@@ -84,6 +91,20 @@ public class ConferTypeOfPreservesController implements Initializable {
                 TipoconservaBLL.update(tpc);
             }
         });
+
+        imageView.setOnMouseClicked(mouseEvent -> {
+            FileChooser fileChooser = new FileChooser();
+            File f = fileChooser.showOpenDialog(((Node) mouseEvent.getSource()).getScene().getWindow());
+            if (f == null) return;
+
+            try {
+                FileInputStream inputStream = new FileInputStream(f);
+                imageView.setImage(new Image(inputStream));
+                tp.setImagem(inputStream.readAllBytes());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void loadComboBox() {
@@ -92,7 +113,6 @@ public class ConferTypeOfPreservesController implements Initializable {
     }
 
     public void onCreateButtonClick() {
-        Tipoconserva tp = new Tipoconserva();
         tp.setNome(namef.getText());
         tp.setPrecoactvenda(Double.parseDouble(pricef.getText()));
         tp.setDescricao(descf.getText());

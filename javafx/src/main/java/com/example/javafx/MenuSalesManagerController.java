@@ -21,16 +21,6 @@ import java.util.ResourceBundle;
 
 public class MenuSalesManagerController implements Initializable {
     @FXML
-    private TableView<Encomenda> orders_table;
-    @FXML
-    private TableColumn<Encomenda, Integer> id_c;
-    @FXML
-    private TableColumn<Encomenda, String> data_c;
-    @FXML
-    private TableColumn<Encomenda, Double> price_c;
-    @FXML
-    private TableColumn<Encomenda, Integer> idclient_c;
-    @FXML
     private ImageView back;
     @FXML
     private Label label_username;
@@ -53,27 +43,13 @@ public class MenuSalesManagerController implements Initializable {
         });
     }
 
-    public void loadData() {
-        id_c.setCellValueFactory(new PropertyValueFactory<>("codencomenda"));
-        data_c.setCellValueFactory(new PropertyValueFactory<>("data"));
-        price_c.setCellValueFactory(new PropertyValueFactory<>("precototal"));
-        idclient_c.setCellValueFactory(new PropertyValueFactory<>("codcliente"));
-        for(Encomenda i : EncomendaBLL.readAll()) {
-            orders_table.getItems().add(i);
-            /*if(i.getCargo().equals("A")) {
-                options_c.setCellValueFactory(users_table -> new SimpleStringProperty("Administrador"));
-            }
-            if(i.getCargo().equals("G")) {
-                options_c.setCellValueFactory(users_table -> new SimpleStringProperty("Gerente"));
-            }
-            if(i.getStatus() == 1) status_c.setCellValueFactory(users_table -> new SimpleStringProperty("Ativo"));
-            else status_c.setCellValueFactory(users_table -> new SimpleStringProperty("Desativo"));*/
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadData();
         label_username.setText(getUser().getUsername());
     }
+
+    public void order(javafx.event.Event event) throws IOException {
+        Logic.changePanel(event, "list_orders-view.fxml", "Conserveira", ListOrdersController.class);
+    }
+
 }

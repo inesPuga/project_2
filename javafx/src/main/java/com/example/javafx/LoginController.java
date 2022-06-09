@@ -52,7 +52,7 @@ public class LoginController {
                 }
                 if(user.getCargo().equals("GV")) {
                     userSession.in(user);
-                    Logic.changePanel(event, "menuSalesManager-view.fxml", "Conserveira", MenuSalesManagerController.class);
+                    Logic.changePanel(event, "menu_sales_manager-view.fxml", "Conserveira", MenuSalesManagerController.class);
                     // move the user to the next panel
                     //scene_menuManager.setUserData(user);
                 }

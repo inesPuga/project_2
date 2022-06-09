@@ -18,7 +18,7 @@ public class Encomenda {
     private Integer codencomenda;
     @Basic
     @Column(name = "PRECOTOTAL")
-    private int precototal;
+    private Double precototal;
     @Basic
     @Column(name = "DATA")
     private String data;
@@ -41,11 +41,11 @@ public class Encomenda {
         this.codencomenda = codencomenda;
     }
 
-    public int getPrecototal() {
+    public Double getPrecototal() {
         return precototal;
     }
 
-    public void setPrecototal(int precototal) {
+    public void setPrecototal(Double precototal) {
         this.precototal = precototal;
     }
 

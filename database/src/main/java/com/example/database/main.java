@@ -25,8 +25,8 @@ public class main {
 
         Estadoencomenda ee = new Estadoencomenda();
         ee.setCodencomenda(1);
-        ee.setIde(1);
-        ee.setDtee("08/06/2022");
+        ee.setIde(21);
+        ee.setDtee("11/06/2022");
         EstadoencomendaBLL.create(ee);
     }
 }

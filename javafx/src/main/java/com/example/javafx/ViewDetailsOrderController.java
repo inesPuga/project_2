@@ -43,6 +43,7 @@ public class ViewDetailsOrderController implements Initializable {
     @FXML
     private TableColumn<OrderState, String> date_c;
     private final DataOrder dataOrder = DataOrder.getInstance();
+    private final UserSession userSession = UserSession.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,9 +63,9 @@ public class ViewDetailsOrderController implements Initializable {
                 OrderState os = event.getRowValue();
                 os.setDesc(event.getNewValue());
                 for(Estadoencomenda i : EstadoencomendaBLL.readAll()) {
-                    if(i.getCodencomenda() == getDataOrder().getCodencomenda()) {
+                    if(i.getCodencomenda() == os.getIdorder()) {
                         for(Estadoe j : EstadoeBLL.readAll()) {
-                            if(j.getIde() == i.getIde()) {
+                            if(os.getIdstate() == i.getIde()) {
                                 i.setDtee(event.getNewValue());
                                 EstadoencomendaBLL.update(i);
                             }
@@ -88,25 +89,38 @@ public class ViewDetailsOrderController implements Initializable {
         return dataOrder.get();
     }
 
+    public Utilizador getUser() {
+        return userSession.get();
+    }
+
     public void backToLogin() {
         back.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
-                try {
-                    Logic.changePanel(event, "login-view.fxml", "Conserveira", LoginController.class);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                if(getUser().getCargo().equals("G")) {
+                    try {
+                        Logic.changePanel(event, "main_menu_manager-view.fxml", "Conserveira", MainMenuManagerController.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if(getUser().getCargo().equals("GV")) {
+                    try {
+                        Logic.changePanel(event, "menu_sales_manager-view.fxml", "Conserveira", MenuSalesManagerController.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });
     }
 
     public List<OrderState> orderstate() {
-        OrderState orderState = new OrderState();
         List<OrderState> list = new ArrayList<>();
         for(Estadoencomenda i : EstadoencomendaBLL.readAll()) {
             if(i.getCodencomenda() == getDataOrder().getCodencomenda()) {
                 for(Estadoe j : EstadoeBLL.readAll()) {
+                    OrderState orderState = new OrderState();
                     if(j.getIde() == i.getIde()) {
                         orderState.setIdorder(i.getCodencomenda());
                         orderState.setIdstate(j.getIde());

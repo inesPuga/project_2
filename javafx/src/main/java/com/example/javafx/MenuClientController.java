@@ -85,7 +85,7 @@ public class MenuClientController implements Initializable {
         else {
             System.out.println("Erro - order menu client");
         }
-        e.setPrecototal(0);
+        e.setPrecototal((double) 0);
         EncomendaBLL.create(e);
         Tipoconservaencomenda te = new Tipoconservaencomenda();
         te.setCodencomenda(e.getCodencomenda());
@@ -127,7 +127,7 @@ public class MenuClientController implements Initializable {
         else {
             System.out.println("Erro - order menu client");
         }
-        e.setPrecototal(0);
+        e.setPrecototal((double) 0);
         EncomendaBLL.create(e);
         Tipoconservaencomenda te = new Tipoconservaencomenda();
         te.setCodencomenda(e.getCodencomenda());

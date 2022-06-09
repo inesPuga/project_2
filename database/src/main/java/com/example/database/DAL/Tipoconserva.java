@@ -1,6 +1,7 @@
 package com.example.database.DAL;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -31,6 +32,19 @@ public class Tipoconserva {
     @Basic
     @Column(name = "CODPEIXE")
     private Integer codpeixe;
+
+    @Lob
+    @Column(name = "IMAGEM")
+    private byte[] imagem;
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
+
     @OneToMany(mappedBy = "tipoconservaByCodtipoconserva")
     private Collection<Lote> lotesByCodtipoconserva;
     @ManyToOne
@@ -99,12 +113,14 @@ public class Tipoconserva {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tipoconserva that = (Tipoconserva) o;
-        return precoactvenda == that.precoactvenda && qtdstock == that.qtdstock && codpeixe == that.codpeixe && Objects.equals(codtipoconserva, that.codtipoconserva) && Objects.equals(nome, that.nome) && Objects.equals(descricao, that.descricao);
+        return Double.compare(that.precoactvenda, precoactvenda) == 0 && qtdstock == that.qtdstock && Objects.equals(codtipoconserva, that.codtipoconserva) && Objects.equals(nome, that.nome) && Objects.equals(descricao, that.descricao) && Objects.equals(codpeixe, that.codpeixe) && Arrays.equals(imagem, that.imagem) && Objects.equals(lotesByCodtipoconserva, that.lotesByCodtipoconserva) && Objects.equals(peixeByCodpeixe, that.peixeByCodpeixe) && Objects.equals(tipoconservaencomendasByCodtipoconserva, that.tipoconservaencomendasByCodtipoconserva) && Objects.equals(valornutricionalsByCodtipoconserva, that.valornutricionalsByCodtipoconserva);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codtipoconserva, nome, precoactvenda, descricao, qtdstock, codpeixe);
+        int result = Objects.hash(codtipoconserva, nome, precoactvenda, descricao, qtdstock, codpeixe, lotesByCodtipoconserva, peixeByCodpeixe, tipoconservaencomendasByCodtipoconserva, valornutricionalsByCodtipoconserva);
+        result = 31 * result + Arrays.hashCode(imagem);
+        return result;
     }
 
     public Collection<Lote> getLotesByCodtipoconserva() {

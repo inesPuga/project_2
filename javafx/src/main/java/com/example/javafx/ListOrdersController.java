@@ -1,11 +1,9 @@
 package com.example.javafx;
 
-import com.example.database.BLL.EncomendaBLL;
-import com.example.database.BLL.LoteBLL;
-import com.example.database.BLL.UtilizadorBLL;
-import com.example.database.DAL.Encomenda;
-import com.example.database.DAL.Lote;
-import com.example.database.DAL.Utilizador;
+import com.example.database.BLL.*;
+import com.example.database.DAL.*;
+import com.example.javafx.tables.OrderClient;
+import com.example.javafx.tables.OrderState;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -21,6 +19,8 @@ import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ListOrdersController implements Initializable {
@@ -35,17 +35,21 @@ public class ListOrdersController implements Initializable {
     @FXML
     private TableColumn<Encomenda, Double> price_c;
     @FXML
-    private TableColumn<Encomenda, Integer> idclient_c;
+    private TableColumn<Encomenda, String> idclient_c;
     @FXML
     private Label label_info;
     //private final UserSession userSession = UserSession.getInstance();
     private final DataOrder dataOrder = DataOrder.getInstance();
+    private final UserSession userSession = UserSession.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();
     }
 
+    public Utilizador getUser() {
+        return userSession.get();
+    }
 
     public void backToLogin() {
         back.setOnMouseClicked(new EventHandler() {
@@ -68,18 +72,19 @@ public class ListOrdersController implements Initializable {
         else {
             label_info.setText("");
             dataOrder.in(order_select);
+            userSession.in(getUser());
             Logic.changePanel(event, "view_details_order-view.fxml", "Conserveira", ViewDetailsOrderController.class);
         }
     }
 
     public void loadData() {
-        ObservableList<Encomenda> list = FXCollections.observableArrayList(EncomendaBLL.readAll());
+        ObservableList<Encomenda> orderClients = FXCollections.observableArrayList(EncomendaBLL.readAll());
         id_c.setCellValueFactory(new PropertyValueFactory<>("codencomenda"));
         data_c.setCellValueFactory(new PropertyValueFactory<>("data"));
         price_c.setCellValueFactory(new PropertyValueFactory<>("precototal"));
         idclient_c.setCellValueFactory(new PropertyValueFactory<>("codcliente"));
         //for(Encomenda i : EncomendaBLL.readAll()) {
-        orders_table.setItems(list);
+        orders_table.setItems(orderClients);
         //}
     }
 

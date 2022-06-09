@@ -63,11 +63,15 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <Button layoutX="36.0" layoutY="390.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="31.0" prefWidth="77.0" stylesheets="@style-view/random.css" text="Criar">
+      <Button layoutX="36.0" layoutY="445.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="31.0" prefWidth="77.0" stylesheets="@style-view/random.css" text="Criar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <Label fx:id="label_info" layoutX="129.0" layoutY="397.0" prefHeight="17.0" prefWidth="128.0" />
+      <ImageView fitHeight="50.0" fitWidth="93.0" layoutX="36.0" layoutY="390.0" pickOnBounds="true"
+                 preserveRatio="true" fx:id="imageView">
+         <Image url="@images/placeholder.png" />
+      </ImageView>
    </children>
 </AnchorPane>
