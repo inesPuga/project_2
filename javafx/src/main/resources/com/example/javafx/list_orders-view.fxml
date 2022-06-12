@@ -29,11 +29,16 @@
             <TableColumn fx:id="idclient_c" prefWidth="127.99996948242188" text="Cliente" />
          </columns>
       </TableView>
-      <Button onAction="#viewDetails" layoutX="472.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
+      <Button layoutX="472.0" layoutY="390.0" mnemonicParsing="false" onAction="#viewDetails" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <Label fx:id="label_info" layoutX="126.0" layoutY="397.0" prefHeight="17.0" prefWidth="165.0" />
+      <Button layoutX="126.0" layoutY="390.0" mnemonicParsing="false" onAction="#onActionGraphics" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Gráficos">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

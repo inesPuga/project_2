@@ -79,13 +79,13 @@ public class MenuClientController implements Initializable {
         else {
             System.out.println("Erro - order menu client");
         }
-        if(LogicDataBase.verifyDate("08/06/2022")) {
-            e.setData("08/06/2022");
+        if(LogicDataBase.verifyDate("08/05/2021")) {
+            e.setData("08/05/2021");
         }
         else {
             System.out.println("Erro - order menu client");
         }
-        e.setPrecototal((double) 0);
+        e.setPrecototal((double) 100);
         EncomendaBLL.create(e);
         Tipoconservaencomenda te = new Tipoconservaencomenda();
         te.setCodencomenda(e.getCodencomenda());
@@ -127,7 +127,7 @@ public class MenuClientController implements Initializable {
         else {
             System.out.println("Erro - order menu client");
         }
-        e.setPrecototal((double) 0);
+        e.setPrecototal((double) 100);
         EncomendaBLL.create(e);
         Tipoconservaencomenda te = new Tipoconservaencomenda();
         te.setCodencomenda(e.getCodencomenda());

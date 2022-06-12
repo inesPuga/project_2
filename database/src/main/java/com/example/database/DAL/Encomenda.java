@@ -8,7 +8,8 @@ import java.util.Objects;
 @NamedQueries({
         @NamedQuery(name = "Encomenda.findAll", query = "SELECT e FROM Encomenda e"),
         @NamedQuery(name = "Encomenda.findByCodEnc", query = "SELECT e FROM Encomenda e WHERE e.codencomenda = :codencomenda"),
-        @NamedQuery(name = "Encomenda.findByCodcli", query = "SELECT e FROM Encomenda e WHERE e.codcliente = :codcliente")})
+        @NamedQuery(name = "Encomenda.findByCodcli", query = "SELECT e FROM Encomenda e WHERE e.codcliente = :codcliente"),
+        @NamedQuery(name = "Encomenda.sumprice", query = "SELECT sum(e.precototal) FROM Encomenda e")})
 public class Encomenda {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "encomenda_seq")

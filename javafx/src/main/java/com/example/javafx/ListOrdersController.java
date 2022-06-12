@@ -77,6 +77,10 @@ public class ListOrdersController implements Initializable {
         }
     }
 
+    public void onActionGraphics(javafx.event.Event event) throws IOException {
+        Logic.changePanel(event, "graphic_orders_view.fxml", "Conserveira", GraphicOrderController.class);
+    }
+
     public List<OrderClient> orderclient() {
         List<OrderClient> list = new ArrayList<>();
         for(Encomenda i : EncomendaBLL.readAll()) {

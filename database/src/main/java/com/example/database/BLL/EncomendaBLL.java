@@ -64,6 +64,25 @@ public class EncomendaBLL {
         return e;
     }
 
+    public static Double sumOrder() {
+        Double i = Double.valueOf(0);
+        if(factory == null)
+            factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+
+        if (em == null) em = factory.createEntityManager();
+
+        Query q1 = em.createNamedQuery("Encomenda.sumprice");
+        Object obj = q1.getSingleResult();
+
+        if(obj != null){
+            i = Double.valueOf(((Double) obj).intValue());
+        }
+        else {
+            return Double.valueOf(0);
+        }
+        return i;
+    }
+
     //search encomenda by id cliente
     public static Encomenda readByIdcliente(int idcliente) {
         Encomenda e = null;
