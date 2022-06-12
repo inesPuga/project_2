@@ -26,7 +26,7 @@
             <TableColumn fx:id="id_c" prefWidth="57.333343505859375" text="ID" />
             <TableColumn fx:id="data_c" prefWidth="121.99998474121094" text="Data" />
             <TableColumn fx:id="price_c" prefWidth="126.6666259765625" text="Preço total" />
-            <TableColumn fx:id="idclient_c" prefWidth="127.99996948242188" text="Código do cliente" />
+            <TableColumn fx:id="idclient_c" prefWidth="127.99996948242188" text="Cliente" />
          </columns>
       </TableView>
       <Button onAction="#viewDetails" layoutX="472.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">

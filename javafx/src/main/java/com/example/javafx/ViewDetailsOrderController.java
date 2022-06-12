@@ -1,9 +1,6 @@
 package com.example.javafx;
 
-import com.example.database.BLL.EstadoeBLL;
-import com.example.database.BLL.EstadoencomendaBLL;
-import com.example.database.BLL.LoteBLL;
-import com.example.database.BLL.UtilizadorBLL;
+import com.example.database.BLL.*;
 import com.example.database.DAL.*;
 import com.example.javafx.tables.OrderState;
 import javafx.collections.FXCollections;
@@ -23,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ViewDetailsOrderController implements Initializable {
@@ -48,10 +46,7 @@ public class ViewDetailsOrderController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idorder.setText(String.valueOf(getDataOrder().getCodencomenda()));
-        if(searchUser(getDataOrder().getCodcliente())!=null){
-            name.setText(searchUser(getDataOrder().getCodcliente()).getNome());
-        }
-        else System.out.println("Error - view details order");
+        name.setText((Objects.requireNonNull(UtilizadorBLL.readById(getDataOrder().getCodcliente()))).getNome());
         date.setText(getDataOrder().getData());
         price.setText(String.valueOf(getDataOrder().getPrecototal()));
         loadData(orderstate());

@@ -80,7 +80,7 @@ public class ListEmployeesController implements Initializable {
     public List<Utilizador> listUsers() {
         List<Utilizador> list = new ArrayList<Utilizador>();
         for(Utilizador i : UtilizadorBLL.readAll()) {
-            if(!i.getCargo().equals("A")) {
+            if(!i.getCargo().equals("A") && !i.getCargo().equals("C")) {
                 if(i.getStatus()==1) {
                     list.add(i);
                 }

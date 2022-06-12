@@ -27,15 +27,15 @@ public class ListOrdersController implements Initializable {
     @FXML
     public ImageView back;
     @FXML
-    private TableView<Encomenda> orders_table;
+    private TableView<OrderClient> orders_table;
     @FXML
-    private TableColumn<Encomenda, Integer> id_c;
+    private TableColumn<OrderClient, Integer> id_c;
     @FXML
-    private TableColumn<Encomenda, String> data_c;
+    private TableColumn<OrderClient, String> data_c;
     @FXML
-    private TableColumn<Encomenda, Double> price_c;
+    private TableColumn<OrderClient, Double> price_c;
     @FXML
-    private TableColumn<Encomenda, String> idclient_c;
+    private TableColumn<OrderClient, String> idclient_c;
     @FXML
     private Label label_info;
     //private final UserSession userSession = UserSession.getInstance();
@@ -44,7 +44,7 @@ public class ListOrdersController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadData();
+        loadData(orderclient());
     }
 
     public Utilizador getUser() {
@@ -65,24 +65,54 @@ public class ListOrdersController implements Initializable {
     }
 
     public void viewDetails(javafx.event.Event event) throws IOException {
-        Encomenda order_select = orders_table.getSelectionModel().getSelectedItem();
+        OrderClient order_select = orders_table.getSelectionModel().getSelectedItem();
         if(order_select == null) {
             label_info.setText("Selecione uma encomenda");
         }
         else {
             label_info.setText("");
-            dataOrder.in(order_select);
+            dataOrder.in(EncomendaBLL.readById(order_select.getIdorder()));
             userSession.in(getUser());
             Logic.changePanel(event, "view_details_order-view.fxml", "Conserveira", ViewDetailsOrderController.class);
         }
     }
 
-    public void loadData() {
-        ObservableList<Encomenda> orderClients = FXCollections.observableArrayList(EncomendaBLL.readAll());
+    public List<OrderClient> orderclient() {
+        List<OrderClient> list = new ArrayList<>();
+        for(Encomenda i : EncomendaBLL.readAll()) {
+            for(Cliente j : ClienteBLL.readAll()) {
+                if(i.getCodcliente() == j.getCodcliente()) {
+                    for(Utilizador k : UtilizadorBLL.readAll()) {
+                        OrderClient orderClient = new OrderClient();
+                        if(k.getIduser()==j.getIduser()) {
+                            orderClient.setName(k.getNome());
+                            orderClient.setIdorder(i.getCodencomenda());
+                            orderClient.setDate(i.getData());
+                            orderClient.setIdclient(j.getCodcliente());
+                            orderClient.setPrice(i.getPrecototal());
+                            list.add(orderClient);
+                        }
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+    public void loadData(List<OrderClient> list) {
+        /*ObservableList<Encomenda> orderClients = FXCollections.observableArrayList(EncomendaBLL.readAll());
         id_c.setCellValueFactory(new PropertyValueFactory<>("codencomenda"));
         data_c.setCellValueFactory(new PropertyValueFactory<>("data"));
         price_c.setCellValueFactory(new PropertyValueFactory<>("precototal"));
         idclient_c.setCellValueFactory(new PropertyValueFactory<>("codcliente"));
+        //for(Encomenda i : EncomendaBLL.readAll()) {
+        orders_table.setItems(orderClients);
+        //}*/
+        ObservableList<OrderClient> orderClients = FXCollections.observableArrayList(list);
+        id_c.setCellValueFactory(new PropertyValueFactory<>("idorder"));
+        data_c.setCellValueFactory(new PropertyValueFactory<>("date"));
+        price_c.setCellValueFactory(new PropertyValueFactory<>("price"));
+        idclient_c.setCellValueFactory(new PropertyValueFactory<>("name"));
         //for(Encomenda i : EncomendaBLL.readAll()) {
         orders_table.setItems(orderClients);
         //}
