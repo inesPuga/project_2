@@ -49,6 +49,7 @@ public class MenuSalesManagerController implements Initializable {
     }
 
     public void order(javafx.event.Event event) throws IOException {
+        userSession.in(getUser());
         Logic.changePanel(event, "list_orders-view.fxml", "Conserveira", ListOrdersController.class);
     }
 

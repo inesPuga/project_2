@@ -11,9 +11,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
@@ -26,6 +24,9 @@ import java.util.ResourceBundle;
 public class ListOrdersController implements Initializable {
     @FXML
     public ImageView back;
+    public ComboBox<Estadoe> cb;
+    public Button graphbutton;
+    public Button okbutton;
     @FXML
     private TableView<OrderClient> orders_table;
     @FXML
@@ -38,13 +39,21 @@ public class ListOrdersController implements Initializable {
     private TableColumn<OrderClient, String> idclient_c;
     @FXML
     private Label label_info;
-    //private final UserSession userSession = UserSession.getInstance();
     private final DataOrder dataOrder = DataOrder.getInstance();
     private final UserSession userSession = UserSession.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData(orderclient());
+        if(!getUser().getCargo().equals("GV")) {
+            cb.setVisible(false);
+            okbutton.setVisible(false);
+        }
+        if(!getUser().getCargo().equals("G")) {
+            graphbutton.setVisible(false);
+            cb.setLayoutX(126);
+            cb.setLayoutY(392);
+        }
     }
 
     public Utilizador getUser() {
@@ -55,10 +64,19 @@ public class ListOrdersController implements Initializable {
         back.setOnMouseClicked(new EventHandler() {
             @Override
             public void handle(Event event) {
-                try {
-                    Logic.changePanel(event, "main_menu_manager-view.fxml", "Conserveira", MainMenuManagerController.class);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                if(getUser().getCargo().equals("G")) {
+                    try {
+                        Logic.changePanel(event, "main_menu_manager-view.fxml", "Conserveira", MainMenuManagerController.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                if(getUser().getCargo().equals("GV")) {
+                    try {
+                        Logic.changePanel(event, "menu_sales_manager-view.fxml", "Conserveira", MenuSalesManagerController.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });

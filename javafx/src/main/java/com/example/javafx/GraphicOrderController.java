@@ -64,15 +64,7 @@ public class GraphicOrderController implements Initializable {
             String[] str = getDropString(i.getData());
             if(year == Integer.parseInt(str[2])) {
                 if((month == Integer.parseInt(str[1]))) {
-                    //System.out.println(i.getCodencomenda());
-                    /*sum += i.getPrecototal();
-                    System.out.println(sum);
-                    return sum;*/
-                    //System.out.println(i.getPrecototal());
                     sum += i.getPrecototal();
-                    //System.out.println(EncomendaBLL.sumOrder());
-                    //return(EncomendaBLL.sumOrder());
-                    //return sum;
                 }
             }
         }
