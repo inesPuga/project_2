@@ -32,7 +32,7 @@
     <class>com.example.database.DAL.Utilizador</class>
     <class>com.example.database.DAL.Valornutricional</class>
     <properties>
-      <property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:49682:XE"/>
+      <property name="hibernate.connection.url" value="jdbc:oracle:thin:@localhost:49686:XE"/>
       <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
       <property name="javax.persistence.jdbc.user" value="db"/>
       <property name="javax.persistence.jdbc.password" value="ines"/>

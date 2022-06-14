@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="web" />
         <module name="database" />
         <module name="javafx" />
       </profile>
@@ -14,6 +15,12 @@
       <module name="database" target="9" />
       <module name="javafx" target="17" />
       <module name="project_two" target="1.5" />
+      <module name="web" target="17" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="web" options="-parameters" />
+    </option>
   </component>
 </project>
