@@ -26,6 +26,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ConferTypeOfPreservesController implements Initializable {
+    public Button create;
+    public Label label;
+    public Button details;
     @FXML private ImageView imageView;
     @FXML
     private ImageView back;
@@ -64,47 +67,74 @@ public class ConferTypeOfPreservesController implements Initializable {
         loadData();
         loadComboBox();
         tpconservas_table.setEditable(true);
-        stock_c.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        stock_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Integer>>() {
-            //@Override
-            public void handle(TableColumn.CellEditEvent<Tipoconserva, Integer> event) {
-                Tipoconserva tpc = event.getRowValue();
-                tpc.setQtdstock(event.getNewValue());
-                TipoconservaBLL.update(tpc);
-            }
-        });
-        price_c.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        price_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Double>>() {
-            //@Override
-            public void handle(TableColumn.CellEditEvent<Tipoconserva, Double> event) {
-                Tipoconserva tpc = event.getRowValue();
-                tpc.setPrecoactvenda(event.getNewValue());
-                TipoconservaBLL.update(tpc);
-            }
-        });
-        name_c.setCellFactory(TextFieldTableCell.forTableColumn());
-        name_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, String>>() {
-            //@Override
-            public void handle(TableColumn.CellEditEvent<Tipoconserva, String> event) {
-                Tipoconserva tpc = event.getRowValue();
-                tpc.setNome(event.getNewValue());
-                TipoconservaBLL.update(tpc);
-            }
-        });
+        if(getUser().getCargo().equals("GS")) {
+            imageView.setVisible(false);
+            descf.setVisible(false);
+            namef.setVisible(false);
+            pricef.setVisible(false);
+            stockf.setVisible(false);
+            tpconservas_table.setLayoutX(126);
+            tpconservas_table.setLayoutY(118);
+            create.setVisible(false);
+            details.setLayoutX(472);
+            details.setLayoutY(390);
+            cb.setVisible(false);
+            label.setVisible(false);
+            stock_c.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+            stock_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Integer>>() {
+                //@Override
+                public void handle(TableColumn.CellEditEvent<Tipoconserva, Integer> event) {
+                    Tipoconserva tpc = event.getRowValue();
+                    tpc.setQtdstock(event.getNewValue());
+                    TipoconservaBLL.update(tpc);
+                }
+            });
+        }
+        else {
+            stock_c.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+            stock_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Integer>>() {
+                //@Override
+                public void handle(TableColumn.CellEditEvent<Tipoconserva, Integer> event) {
+                    Tipoconserva tpc = event.getRowValue();
+                    tpc.setQtdstock(event.getNewValue());
+                    TipoconservaBLL.update(tpc);
+                }
+            });
+            price_c.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+            price_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, Double>>() {
+                //@Override
+                public void handle(TableColumn.CellEditEvent<Tipoconserva, Double> event) {
+                    Tipoconserva tpc = event.getRowValue();
+                    tpc.setPrecoactvenda(event.getNewValue());
+                    TipoconservaBLL.update(tpc);
+                }
+            });
+            name_c.setCellFactory(TextFieldTableCell.forTableColumn());
+            name_c.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Tipoconserva, String>>() {
+                //@Override
+                public void handle(TableColumn.CellEditEvent<Tipoconserva, String> event) {
+                    Tipoconserva tpc = event.getRowValue();
+                    tpc.setNome(event.getNewValue());
+                    TipoconservaBLL.update(tpc);
+                }
+            });
+            //image view
+            imageView.setOnMouseClicked(mouseEvent -> {
+                FileChooser fileChooser = new FileChooser();
+                File f = fileChooser.showOpenDialog(((Node) mouseEvent.getSource()).getScene().getWindow());
+                if (f == null) return;
 
-        imageView.setOnMouseClicked(mouseEvent -> {
-            FileChooser fileChooser = new FileChooser();
-            File f = fileChooser.showOpenDialog(((Node) mouseEvent.getSource()).getScene().getWindow());
-            if (f == null) return;
-
-            try {
-                FileInputStream inputStream = new FileInputStream(f);
-                imageView.setImage(new Image(inputStream));
-                tp.setImagem(inputStream.readAllBytes());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+                try {
+                    FileInputStream inputStream = new FileInputStream(f);
+                    imageView.setImage(new Image(inputStream));
+                    tp.setImagem(inputStream.readAllBytes());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
+        
+        
     }
 
     public void loadComboBox() {
@@ -139,7 +169,10 @@ public class ConferTypeOfPreservesController implements Initializable {
             @Override
             public void handle(Event event) {
                 try {
-                    Logic.changePanel(event, "main_menu_manager-view.fxml", "Conserveira", MainMenuManagerController.class);
+                    if(getUser().getCargo().equals("G")) {
+                        Logic.changePanel(event, "main_menu_manager-view.fxml", "Conserveira", MainMenuManagerController.class);
+                    }
+                    else Logic.changePanel(event, "menu_stock_man-view.fxml", "Conserveira", MenuStockManager.class);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

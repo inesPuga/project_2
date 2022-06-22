@@ -33,5 +33,10 @@
             <Image url="@images/arrow.png" />
          </image>
       </ImageView>
+      <Button onAction="#onAddButtonClick" fx:id="create" layoutX="126.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Adicionar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -23,10 +23,15 @@ public class main {
             System.out.println(i.getCodencomenda());
         }*/
 
-        Estadoencomenda ee = new Estadoencomenda();
+        /*Estadoencomenda ee = new Estadoencomenda();
         ee.setCodencomenda(1);
         ee.setIde(21);
         ee.setDtee("11/06/2022");
-        EstadoencomendaBLL.create(ee);
+        EstadoencomendaBLL.create(ee);*/
+        for(Estadoencomenda i : EstadoencomendaBLL.readAll()) {
+            if(i.getIde()==1 && i.getCodencomenda()==2) {
+                EstadoencomendaBLL.delete(i);
+            }
+        }
     }
 }

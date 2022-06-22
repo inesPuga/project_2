@@ -32,12 +32,12 @@
             <Image url="@images/arrow.png" />
          </image>
       </ImageView>
-      <Button layoutX="557.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
+      <Button fx:id="details" layoutX="557.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Ver detalhes">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Label layoutX="36.0" layoutY="128.0" text="Criar tipo de conserva:" textFill="#5f5f5f">
+      <Label fx:id="label" layoutX="36.0" layoutY="128.0" text="Criar tipo de conserva:" textFill="#5f5f5f">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -63,7 +63,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <Button layoutX="36.0" layoutY="445.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="31.0" prefWidth="77.0" stylesheets="@style-view/random.css" text="Criar">
+      <Button fx:id="create" layoutX="36.0" layoutY="445.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="31.0" prefWidth="77.0" stylesheets="@style-view/random.css" text="Criar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

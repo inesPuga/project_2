@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,17 +36,22 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Label fx:id="label_info" layoutX="126.0" layoutY="397.0" prefHeight="17.0" prefWidth="165.0" />
-      <ComboBox fx:id="cb" layoutX="126.0" layoutY="435.0" prefHeight="25.0" prefWidth="101.0" promptText="Estado" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" />
+      <Label fx:id="label_info" alignment="CENTER_RIGHT" layoutX="407.0" layoutY="440.0" prefHeight="17.0" prefWidth="165.0" textAlignment="RIGHT" />
+      <ComboBox fx:id="cb" layoutX="240.0" layoutY="435.0" prefHeight="25.0" prefWidth="101.0" promptText="Estado" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" />
       <Button fx:id="graphbutton" layoutX="126.0" layoutY="390.0" mnemonicParsing="false" onAction="#onActionGraphics" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Gráficos">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="okbutton" layoutX="240.0" layoutY="390.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Adicionar">
+      <Button fx:id="okbutton" layoutX="240.0" layoutY="390.0" mnemonicParsing="false" onAction="#newState" prefHeight="31.0" prefWidth="101.0" stylesheets="@style-view/random.css" text="Adicionar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <TextField fx:id="dataf" layoutX="126.0" layoutY="435.0" prefHeight="28.0" prefWidth="101.0" promptText="Data" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

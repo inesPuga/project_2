@@ -57,6 +57,19 @@ public class UtilizadorBLL {
         return 1;   //logged in user does not exist
     }
 
+    public static Utilizador verifyLoginWeb(Utilizador user) {
+        for(Utilizador u : UtilizadorBLL.readAll()) {
+            if(u.getCargo().equals("C")) {
+                //System.out.println("ola2");
+                if(u.getEmail().equals(user.getEmail()) && u.getPassword().equals(LogicDataBase.passEncrypt(user.getPassword()))) {
+                    //System.out.println(user.getEmail() + " " + user.getPassword());
+                    return u;   //logged in user exists
+                }
+            }
+        }
+        return null;   //logged in user does not exist
+    }
+
     //check if username exists -> create user
     public static int checkUsername(Utilizador user) {
         boolean found = false;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.GraphicOrderController">
+   <children>
+      <BarChart fx:id="bar_chart" layoutX="100.0" layoutY="50.0" stylesheets="@style-view/barcharts.css">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <ImageView fx:id="backyear" fitHeight="20.0" fitWidth="20.0" layoutX="116.0" layoutY="24.0" onMouseClicked="#calculateYear">
+         <image>
+            <Image url="@images/backyear.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="nextyear" fitHeight="20.0" fitWidth="20.0" layoutX="580.0" layoutY="24.0" onMouseClicked="#calculateYear">
+         <image>
+            <Image url="@images/nextyear.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="back" fitHeight="17.0" fitWidth="15.0" layoutX="28.0" layoutY="27.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/arrow.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

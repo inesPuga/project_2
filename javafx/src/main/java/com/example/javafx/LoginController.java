@@ -3,6 +3,7 @@ package com.example.javafx;
 import com.example.database.DAL.Utilizador;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import com.example.database.BLL.*;
@@ -58,7 +59,7 @@ public class LoginController {
                 }
                 if(user.getCargo().equals("GS")) {
                     userSession.in(user);
-                    Logic.changePanel(event, "stock_manager-view.fxml", "Conserveira", StockManagerController.class);
+                    Logic.changePanel(event, "menu_stock_man-view.fxml", "Conserveira", MenuStockManager.class);
                     // move the user to the next panel
                     //scene_menuManager.setUserData(user);
                 }

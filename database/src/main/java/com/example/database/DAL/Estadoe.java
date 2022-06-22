@@ -57,4 +57,9 @@ public class Estadoe {
     public void setEstadoencomendasByIde(Collection<Estadoencomenda> estadoencomendasByIde) {
         this.estadoencomendasByIde = estadoencomendasByIde;
     }
+
+    @Override
+    public String toString() {
+        return descricaoe;
+    }
 }

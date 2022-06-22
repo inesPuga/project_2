@@ -46,10 +46,12 @@ public class MainMenuManagerController implements Initializable {
     }
 
     public void onActionListTypeOfPreserves(javafx.event.Event event) throws IOException {
+        userSession.in(getUser());
         Logic.changePanel(event, "confer_type_of_preserves-view.fxml", "Conserveira", ConferTypeOfPreservesController.class);
     }
 
     public void onActionListFish(javafx.event.Event event) throws IOException {
+        userSession.in(getUser());
         Logic.changePanel(event, "list_fish-view.fxml", "Conserveira", ListFishController.class);
     }
 

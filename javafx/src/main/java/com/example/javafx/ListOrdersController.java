@@ -25,6 +25,8 @@ public class ListOrdersController implements Initializable {
     @FXML
     public ImageView back;
     public ComboBox<Estadoe> cb;
+    public TextField dataf;
+    private ObservableList<Estadoe> obsList;
     public Button graphbutton;
     public Button okbutton;
     @FXML
@@ -45,9 +47,12 @@ public class ListOrdersController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData(orderclient());
+        obsList = FXCollections.observableArrayList(EstadoeBLL.readAll());
+        cb.setItems(obsList);
         if(!getUser().getCargo().equals("GV")) {
             cb.setVisible(false);
             okbutton.setVisible(false);
+            dataf.setVisible(false);
         }
         if(!getUser().getCargo().equals("G")) {
             graphbutton.setVisible(false);
@@ -80,6 +85,38 @@ public class ListOrdersController implements Initializable {
                 }
             }
         });
+    }
+
+    public void newState() {
+        OrderClient order_select = orders_table.getSelectionModel().getSelectedItem();
+        if(order_select == null) {
+            label_info.setText("Selecione uma encomenda");
+        }
+        else {
+            //order selected
+            //choose state
+            if(cb.getValue() != null && LogicDataBase.verifyDate(dataf.getText())) {
+                //System.out.println(cbstr);
+                Estadoencomenda state_order = new Estadoencomenda();
+                state_order.setIde((searchState(cb.getValue().toString())).getIde());
+                state_order.setCodencomenda(order_select.getIdorder());
+                state_order.setDtee(dataf.getText());
+                EstadoencomendaBLL.create(state_order);
+                label_info.setText("");
+            }
+            else {
+                label_info.setText("Dados inválidos");
+            };
+        }
+    }
+
+    public Estadoe searchState(String desc) {
+        for(Estadoe i : EstadoeBLL.readAll()) {
+            if(i.getDescricaoe().equals(desc)) {
+                return i;
+            }
+        }
+        return null;
     }
 
     public void viewDetails(javafx.event.Event event) throws IOException {

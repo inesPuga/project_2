@@ -3,31 +3,38 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.CreateFishController">
    <children>
-      <Label layoutX="272.0" layoutY="87.0" text="CRIAR PEIXE" textFill="#5f5f5f">
+      <Label layoutX="252.0" layoutY="87.0" text="CRIAR PEIXE" textFill="#5f5f5f">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="272.0" layoutY="123.0" text="Preencha os campos para criar um tipo de conserva" />
-      <TextField fx:id="namef" layoutX="272.0" layoutY="205.0" prefHeight="25.0" prefWidth="195.0" promptText="Nome" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
+      <Label layoutX="256.0" layoutY="122.0" text="Preencha os campos para criar um tipo de conserva" />
+      <TextField fx:id="namef" layoutX="252.0" layoutY="206.0" prefHeight="25.0" prefWidth="195.0" promptText="Nome" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="stockf" layoutX="272.0" layoutY="265.0" prefHeight="25.0" prefWidth="195.0" promptText="Stock" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
+      <TextField fx:id="stockf" layoutX="252.0" layoutY="266.0" prefHeight="25.0" prefWidth="195.0" promptText="Stock" style="-fx-border-color: #5F5F5F; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <Button fx:id="button" layoutX="272.0" layoutY="381.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="35.0" prefWidth="195.0" stylesheets="@style-view/random.css" text="Registar peixe">
+      <Button fx:id="button" layoutX="252.0" layoutY="381.0" mnemonicParsing="false" onAction="#onCreateButtonClick" prefHeight="35.0" prefWidth="195.0" stylesheets="@style-view/random.css" text="Registar peixe">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <ImageView fx:id="back" fitHeight="17.0" fitWidth="15.0" layoutX="54.0" layoutY="54.0" onMouseClicked="#backToListFish" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/arrow.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
