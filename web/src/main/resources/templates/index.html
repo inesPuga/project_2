@@ -56,7 +56,8 @@
                 <a class="nav-link" href="about.html">Sobre nós</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="furniture.html">Produtos</a>
+                <a class="nav-link" th:if="${user}" th:href="@{/furniture(id=${user.iduser})}" href="#">Produtos</a>
+                <a class="nav-link" th:unless="${user}" th:href="@{furniture}" href="#">Produtos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contacte-nos</a>
@@ -101,10 +102,16 @@
                       Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn1">
+                      <a href="" th:if="${user}" class="btn1">
+                        Sobre nós
+                      </a>
+                      <a href="" th:unless="${user}" class="btn1">
                         Registar
                       </a>
-                      <a href="" class="btn2">
+                      <a href="" th:if="${user}" class="btn2">
+                        Conservas
+                      </a>
+                      <a href="" th:unless="${user}" class="btn2">
                         Entrar
                       </a>
                     </div>

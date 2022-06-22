@@ -13,7 +13,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Edgecut</title>
+  <title>Conserveira | Conservas</title>
 
 
   <!-- bootstrap core css -->
@@ -39,7 +39,7 @@
       <nav class="navbar navbar-expand-lg custom_nav-container ">
         <a class="navbar-brand" href="index.html">
           <span>
-            Edgecut
+            Conserveira
           </span>
         </a>
         </a>
@@ -50,29 +50,29 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
             <ul class="navbar-nav  ">
-              <li class="nav-item ">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html"> About</a>
-              </li>
               <li class="nav-item active">
-                <a class="nav-link" href="furniture.html">Furnitures</a>
+                <a class="nav-link" href="index.html">Início<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog</a>
+                <a class="nav-link" href="about.html">Sobre nós</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
+                <a class="nav-link" th:href="@{/furniture}" href="#">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contacte-nos</a>
               </li>
             </ul>
           </div>
           <div class="quote_btn-container">
-            <a href="">
+            <a class="nav-link" th:if="${user}">
+              Olá, [[${user.username}]]
+            </a>
+            <a href="#" th:unless="${user}" th:href="@{/login}">
               <span>
-                Login
+                Entrar
               </span>
-              <i class="fa fa-user" aria-hidden="true"></i>
+              <!-- <i class="fa fa-user" aria-hidden="true"></i> !-->
             </a>
             <form class="form-inline">
               <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
