@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!-- Basic -->
@@ -51,7 +51,8 @@
           <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
             <ul class="navbar-nav  ">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Início<span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:if="${user}" th:href="@{/index(id=${user.iduser})}" href="#">Início</a>
+                <a class="nav-link" th:unless="${user}" th:href="@{index}" href="#">Início</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">Sobre nós</a>
@@ -99,121 +100,25 @@
         </p>
       </div>
       <div class="row">
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4" th:each="list : ${lista}">
           <div class="box">
-            <div class="img-box">
-              <img src="images/f1.png" alt="">
+            <div class="img-box" th:if="${list.imagem}">
+              <img th:src="${list.codtipoconserva + '/imagem'}" alt="">
+            </div>
+            <div class="img-box" th:unless="${list.imagem}">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAQlBMVEX///+hoaGenp6ampr39/fHx8fOzs7j4+P8/Pyvr6/d3d3FxcX29va6urqYmJjs7OzU1NSlpaW1tbWtra3n5+e/v78TS0zBAAACkUlEQVR4nO3b63KCMBCGYUwUUVEO6v3fagWVY4LYZMbZnff51xaZ5jON7CZNEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQb5tvI8qzX4/nH84XG5Upfj2ir2V2E5fZ/XpIX9saMnhkYLIkiyRJjdgMoiEDMmiQgfwM8rSu77ew2wnPoLTmwdZBs0J2BuXrYckcQm4nOoP+WcmWAbcTnUHZPy9eA24nOoN7n0HI54ToDM5k8PjluwyqgNuJzqDoaugPg8gWZ4noDAYLwuIg75fLeeHHsjNIzrZJwWwW+0DNsmEWPjiEZ5AcD8ZUu8VZ8HyQMifvBdIz+PS33i8adu+7Qn4Gn1Tdupl7rlCfQb9seosK7RkcBy1o30iVZ5CPOtDW3WhQnsF13IV3v0p3BqfJRoSpXVepzmA/24+yqeMyzRm4tqOs44lSUwa3yfgOri25av5CPRnklR33VlPnrqSZV09qMsiqSWV082xOz1uPajJ49pTM/f115k6guWa6JGjJ4N1lt8fXN2rv/vysjFaSQdFXBc/KKF04ptFPliclGVR9Bu27XCyeVOkmy5OODAZN9rYyyip/AIPJ8qIig+PoXbf7YdPdncFoSdCQQT4ZceV+MhiFMBy0hgyu0yGvOLI17KwpyGBaHK5jtt0N5GcwLw7XZdB31sRn8O+ziqYro8Vn4CwOV+k6a9Iz+PwRsKC7h+gMfMXhKu/OmuwM/MXhKq8yWnYG/uJw5Uxoy2jRGZTBZ/jboxuSM1guDtdNhKazJjiDbNMe0AxzKUVnkO+jEJxBxNtJzWCTxlNLzSB8KehJ/H+mJGYAjaDjzj9SnHZRuXZiAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECXP1XDHv7U4SNFAAAAAElFTkSuQmCC" alt="">
             </div>
             <div class="detail-box">
-              <h5>
-                brown Chair Design
-              </h5>
+              <h5 th:text="${list.nome}"> </h5>
               <div class="price_box">
                 <h6 class="price_heading">
-                  <span>$</span> 100.00
+                  [[${list.precoactvenda}]] €
                 </h6>
                 <a href="">
-                  Buy Now
+                  Adicionar ao carrinho
                 </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/f2.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Double Bed Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 200.00
-                </h6>
                 <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/f3.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                House Chair Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 200.00
-                </h6>
-                <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/f4.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                brown Table Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 100.00
-                </h6>
-                <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/f5.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Blue Chair Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 200.00
-                </h6>
-                <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/f6.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Brown Table Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 200.00
-                </h6>
-                <a href="">
-                  Buy Now
+                  Ver detalhes
                 </a>
               </div>
             </div>

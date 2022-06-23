@@ -1,6 +1,8 @@
 package com.example.web;
 
+import com.example.database.BLL.TipoconservaBLL;
 import com.example.database.BLL.UtilizadorBLL;
+import com.example.database.DAL.Tipoconserva;
 import com.example.database.DAL.Utilizador;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class LoginController {
@@ -23,8 +27,9 @@ public class LoginController {
         //System.out.println(user.getUsername());
         //System.out.println(user.getEmail());
         if(userTemp != null) {
-            model.addAttribute("user", userTemp);
-            ic.listReserves(model);
+            var option = Optional.<Integer>empty();
+            option = Optional.of(userTemp.getIduser());
+            ic.listReserves(model, option);
             return "index";
         }
         else {

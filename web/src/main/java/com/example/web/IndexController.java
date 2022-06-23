@@ -1,18 +1,14 @@
 package com.example.web;
 
 
-import com.example.database.BLL.ClienteBLL;
 import com.example.database.BLL.TipoconservaBLL;
 import com.example.database.BLL.UtilizadorBLL;
-import com.example.database.DAL.Cliente;
 import com.example.database.DAL.Tipoconserva;
 import com.example.database.DAL.Utilizador;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,12 +16,18 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class IndexController {
     @GetMapping("/index")
-    public String listReserves(Model model) {
+    public String listReserves(Model model, @RequestParam("id") Optional<Integer> id) {
         List<Tipoconserva> tiposConserva = TipoconservaBLL.readAll();
+        if(id.isPresent()) {
+            int iduser = (int) id.orElse(0);
+            Utilizador user = UtilizadorBLL.readById(iduser);
+            model.addAttribute("user", user);
+        }
         for(Utilizador i : UtilizadorBLL.readAll()) {
             if(i.getCargo().equals("C")) {
                 model.addAttribute("user_client", i);
@@ -47,11 +49,14 @@ public class IndexController {
     }
 
     @GetMapping("/furniture")
-    public String product(Model model, @RequestParam Integer id) {
-        Utilizador user = UtilizadorBLL.readById(id);
-        if(user!=null) {
+    public String product(Model model, @RequestParam("id") Optional<Integer> id) {
+        if(id.isPresent()) {
+            int iduser = (int) id.orElse(0);
+            Utilizador user = UtilizadorBLL.readById(iduser);
             model.addAttribute("user", user);
         }
+        List<Tipoconserva> tiposConserva = TipoconservaBLL.readAll();
+        model.addAttribute("lista", tiposConserva);
         return "furniture";
     }
 
