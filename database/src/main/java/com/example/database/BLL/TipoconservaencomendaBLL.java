@@ -22,11 +22,12 @@ public class TipoconservaencomendaBLL {
         if (em == null) em = factory.createEntityManager();
 
         em.getTransaction().begin();
-        em.persist(tce);
+        em.merge(tce);
         em.getTransaction().commit();
+        //em.close();
     }
 
-    public static List<Tipoconservaencomenda> readAll(){
+    public static List<Tipoconservaencomenda> readAll() {
         List<Tipoconservaencomenda> listaTce = new ArrayList<>();
         if(factory == null)
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
@@ -84,8 +85,8 @@ public class TipoconservaencomendaBLL {
         return tce;
     }
 
-    public static Tipoconservaencomenda readByCodcompra(int codencomenda) {
-        Tipoconservaencomenda tce = null;
+    public static List<Tipoconservaencomenda> readByCodcompra(int codencomenda) {
+        List<Tipoconservaencomenda> listaTce = new ArrayList<>();
         if(factory == null)
             factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 
@@ -93,15 +94,12 @@ public class TipoconservaencomendaBLL {
 
         Query q1 = em.createNamedQuery("Tipoconservaencomenda.findByCodencomenda");
         q1.setParameter("codencomenda", codencomenda);
-        Object obj = q1.getSingleResult();
+        List<Object> result = q1.getResultList();
 
-        if(obj != null){
-            tce = ((Tipoconservaencomenda)obj);
+        for(Object o : result){
+            listaTce.add((Tipoconservaencomenda) o);
         }
-        else {
-            return null;
-        }
-        return tce;
+        return listaTce;
     }
 
     public static void update(Tipoconservaencomenda tce) {

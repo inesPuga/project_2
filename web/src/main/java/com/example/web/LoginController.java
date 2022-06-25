@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Controller
 public class LoginController {
+
     @GetMapping("/login")
     public String index(Model model) {
         return "login";

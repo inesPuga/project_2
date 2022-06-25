@@ -66,14 +66,14 @@
             </ul>
           </div>
           <div class="quote_btn-container">
-            <a class="nav-link" th:if="${user}">
+            <a href="#" class="nav-link" th:if="${user}">
               Olá, [[${user.username}]]
             </a>
+            <a href="#" th:if="${user}" class="fa fa-shopping-cart"></a>
             <a href="#" th:unless="${user}" th:href="@{/login}">
               <span>
                 Entrar
               </span>
-              <!-- <i class="fa fa-user" aria-hidden="true"></i> !-->
             </a>
             <form class="form-inline">
               <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
@@ -340,7 +340,7 @@
   <!-- end blog section -->
 
   <!-- client section -->
-
+  <!--
   <section class="client_section layout_padding-bottom" th:each="client : ${user_client}">
     <div class="container">
       <div class="heading_container">
@@ -386,10 +386,11 @@
       </div>
     </div>
   </section>
-
+  !-->
   <!-- end client section -->
 
-  <!-- contact section -->
+  <!-- contact section !-->
+  <!--
   <section class="contact_section  long_section">
     <div class="container">
       <div class="row">
@@ -431,7 +432,9 @@
       </div>
     </div>
   </section>
+  !-->
   <!-- end contact section -->
+
 
   <!-- info section -->
   <section class="info_section long_section">
