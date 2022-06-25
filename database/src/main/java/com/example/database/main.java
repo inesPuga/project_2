@@ -6,32 +6,29 @@ import com.example.database.DAL.*;
 
 public class main {
     public static void main(String[] args) {
-        /*Utilizador user = new Utilizador();
-        user.setUsername("inespuga");
+        /*Cpostal cp = new Cpostal();
+        cp.setCodpostal("4900-387");
+        cp.setLocalidade("Viana do Castelo");
+        CPostalBLL.create(cp);*/
+        /*
+        Utilizador user = new Utilizador();
+        user.setUsername("inespuga1312");
         user.setStatus(1);
         user.setCargo("A");
-        user.setEmail("inespuga2002@gmail.com");
+        user.setEmail("inespuga1312@gmail.com");
         user.setNome("Inês Puga Alves");
         user.setNumtel(969890424);
         user.setPassword(LogicDataBase.passEncrypt("piloto"));
-        UtilizadorBLL.create(user);*/
-        /*Gestorstock gs = new Gestorstock();
-        gs.setIduser(user.getIduser());
-        GestorstockBLL.create(gs);*/
-
-        /*for(Encomenda i : EncomendaBLL.readAll()){
-            System.out.println(i.getCodencomenda());
-        }*/
-
-        /*Estadoencomenda ee = new Estadoencomenda();
-        ee.setCodencomenda(1);
-        ee.setIde(21);
-        ee.setDtee("11/06/2022");
-        EstadoencomendaBLL.create(ee);*/
-        for(Estadoencomenda i : EstadoencomendaBLL.readAll()) {
-            if(i.getIde()==1 && i.getCodencomenda()==2) {
-                EstadoencomendaBLL.delete(i);
-            }
-        }
+        UtilizadorBLL.create(user);
+        Cliente client = new Cliente();
+        client.setNomerua("Quelha das Alminhas");
+        client.setNif(123456789);
+        client.setDtnascimento("13/12/2002");
+        client.setNumcc(30475595);
+        client.setNumporta(60);
+        client.setCodpostal("4900-387");
+        client.setIduser(user.getIduser());
+        ClienteBLL.update(client);
+        */
     }
 }

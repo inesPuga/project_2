@@ -5,12 +5,10 @@ import com.example.database.DAL.*;
 import com.example.web.Model.CarItemsService;
 import com.example.web.Model.CartItems;
 import org.checkerframework.checker.units.qual.C;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.DateFormat;
@@ -44,8 +42,15 @@ public class OrderController {
             order.setData(date());
             order.setCodcliente(searchClient(user).getCodcliente());
             EncomendaBLL.create(order);
+            Estadoencomenda state = new Estadoencomenda();
+            state.setCodencomenda(order.getCodencomenda());
+            state.setIde(EstadoeBLL.readById(1).getIde());
+            state.setDtee(date());
+            EstadoencomendaBLL.create(state);
+            refreshprice(order);
             model.addAttribute("order", order);
             model.addAttribute("list_orderprod", infoOrder(order));
+            model.addAttribute("list_orderprodx", infoOrderX(order));
         }
         if(idproduct.isPresent()) {
             int id_product = (int) idproduct.orElse(0);
@@ -59,12 +64,15 @@ public class OrderController {
         model.addAttribute("lista", tiposConserva);
         if(order != null && product != null) {
             addproductorder(order, product);
+            refreshprice(order);
             model.addAttribute("list_orderprod", infoOrder(order));
+            model.addAttribute("list_orderprodx", infoOrderX(order));
         }
         return "order";
     }
 
     @GetMapping("/remove")
+    //@ResponseStatus(value = HttpStatus.OK)
     public String removeproduct(Model model, @RequestParam("idu") Optional<Integer> iduser, @RequestParam("ido") Optional<Integer> idorder, @RequestParam("idp") Optional<Integer> idproduct) {
         Encomenda order = new Encomenda();
         Tipoconserva product = new Tipoconserva();
@@ -82,17 +90,31 @@ public class OrderController {
             int id_product = (int) idproduct.orElse(0);
             product = TipoconservaBLL.readByCodTipoConserva(id_product);
         }
-        System.out.println(product.getCodtipoconserva());
-        System.out.println(order.getCodencomenda());
         Tipoconservaencomenda tipoconservaencomenda = read(order.getCodencomenda(), product.getCodtipoconserva());
         if(tipoconservaencomenda != null) {
-            TipoconservaencomendaBLL.delete(tipoconservaencomenda);
+            int qtd = tipoconservaencomenda.getQtd();
+            float result = qtd - 0.5F;
+            /*
+            if(verifyQuantity((int) result, product)==1) {
+                model.addAttribute("erro", "Stock insuficiente");
+            }
+            if(verifyQuantity((int) result, product)==0) {
+                tipoconservaencomenda.setQtd((int) result);
+            }
+            */
+            tipoconservaencomenda.setQtd((int) result);
+            refreshprice(order);
+            TipoconservaencomendaBLL.update(tipoconservaencomenda);
+            if(tipoconservaencomenda.getQtd()==0) {
+                TipoconservaencomendaBLL.delete(tipoconservaencomenda);
+            }
             model.addAttribute("product", product);
             model.addAttribute("order", order);
             model.addAttribute("user", user);
             model.addAttribute("lista", tiposConserva);
             model.addAttribute("list_orderprod", infoOrder(order));
-            return "order";
+            model.addAttribute("list_orderprodx", infoOrderX(order));
+            return "remove";
         }
         else {
             model.addAttribute("product", product);
@@ -100,8 +122,89 @@ public class OrderController {
             model.addAttribute("user", user);
             model.addAttribute("lista", tiposConserva);
             model.addAttribute("list_orderprod", infoOrder(order));
-            return "order";
+            model.addAttribute("list_orderprodx", infoOrderX(order));
+            return "remove";
         }
+    }
+
+    @GetMapping("/add")
+    //@ResponseStatus(value = HttpStatus.OK)
+    public String addproduct(Model model, @RequestParam("idu") Optional<Integer> iduser, @RequestParam("ido") Optional<Integer> idorder, @RequestParam("idp") Optional<Integer> idproduct) {
+        Encomenda order = new Encomenda();
+        Tipoconserva product = new Tipoconserva();
+        Utilizador user = new Utilizador();
+        List<Tipoconserva> tiposConserva = TipoconservaBLL.readAll();
+        if(iduser.isPresent()) {
+            int id_user = (int) iduser.orElse(0);
+            user = UtilizadorBLL.readById(id_user);
+        }
+        if(idorder.isPresent()) {
+            int id_order = (int) idorder.orElse(0);
+            order = EncomendaBLL.readById(id_order);
+        }
+        if(idproduct.isPresent()) {
+            int id_product = (int) idproduct.orElse(0);
+            product = TipoconservaBLL.readByCodTipoConserva(id_product);
+        }
+        Tipoconservaencomenda tipoconservaencomenda = read(order.getCodencomenda(), product.getCodtipoconserva());
+        if(tipoconservaencomenda != null) {
+            int qtd = tipoconservaencomenda.getQtd();
+            int result = qtd + 1;
+            /*
+            if(verifyQuantity(result, product)==1) {
+                model.addAttribute("erro", "Stock insuficiente");
+            }
+            if(verifyQuantity(result, product)==0) {
+                tipoconservaencomenda.setQtd(result);
+            }
+            */
+            tipoconservaencomenda.setQtd(result);
+            refreshprice(order);
+            TipoconservaencomendaBLL.update(tipoconservaencomenda);
+            model.addAttribute("product", product);
+            model.addAttribute("order", order);
+            model.addAttribute("user", user);
+            model.addAttribute("lista", tiposConserva);
+            model.addAttribute("list_orderprod", infoOrder(order));
+            model.addAttribute("list_orderprodx", infoOrderX(order));
+            return "add";
+        }
+        else {
+            model.addAttribute("product", product);
+            model.addAttribute("order", order);
+            model.addAttribute("user", user);
+            model.addAttribute("lista", tiposConserva);
+            model.addAttribute("list_orderprod", infoOrder(order));
+            model.addAttribute("list_orderprodx", infoOrderX(order));
+            return "add";
+        }
+    }
+
+    public int verifyQuantity(int qtd, Tipoconserva p) {
+        if(qtd > p.getQtdstock()) {
+            return 1;
+        }
+        else {
+            int qtd_result = p.getQtdstock() - qtd;
+            p.setQtdstock(qtd_result);
+            TipoconservaBLL.update(p);
+        }
+        return 0;
+    }
+
+    public void refreshprice(Encomenda order) {
+        double result_price = 0;
+        double price = 0;
+        for(Tipoconservaencomenda i : TipoconservaencomendaBLL.readAll()) {
+            for(Tipoconserva j : TipoconservaBLL.readAll()) {
+                if(order.getCodencomenda() == i.getCodencomenda() && j.getCodtipoconserva() == i.getCodtipoconserva()) {
+                    price = j.getPrecoactvenda()*i.getQtd();
+                    result_price = result_price + price;
+                }
+            }
+        }
+        order.setPrecototal(result_price);
+        EncomendaBLL.update(order);
     }
 
     public Tipoconservaencomenda read(int ido , int idp) {
@@ -129,6 +232,19 @@ public class OrderController {
             for(Tipoconserva j : TipoconservaBLL.readAll()) {
                 if(order.getCodencomenda() == i.getCodencomenda() && j.getCodtipoconserva() == i.getCodtipoconserva()) {
                     product_list.add(j);
+                }
+            }
+
+        }
+        return product_list;
+    }
+
+    public List<Tipoconservaencomenda> infoOrderX(Encomenda order) {
+        List<Tipoconservaencomenda> product_list = new ArrayList<>();
+        for(Tipoconservaencomenda i : TipoconservaencomendaBLL.readAll()) {
+            for(Tipoconserva j : TipoconservaBLL.readAll()) {
+                if(order.getCodencomenda() == i.getCodencomenda() && j.getCodtipoconserva() == i.getCodtipoconserva()) {
+                    product_list.add(i);
                 }
             }
 

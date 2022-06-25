@@ -74,7 +74,6 @@ public class LoginController {
         if(res == 1) {
             msgLabel.setText("Dados incorretos");
         }
-        //}
 
     }
 
@@ -90,7 +89,7 @@ public class LoginController {
         List<Utilizador> users = UtilizadorBLL.readAll();
         System.out.println(users);
         for(Utilizador i : users) {
-            if(i.getUsername().equals(text1) || i.getEmail().equals(text1)) {
+            if((i.getUsername().equals(text1) || i.getEmail().equals(text1))) {
                 if(i.getPassword().equals(text2)) {
                     return 0; //user exist -> login -> success
                 }

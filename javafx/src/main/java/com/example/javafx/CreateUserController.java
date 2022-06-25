@@ -164,8 +164,8 @@ public class CreateUserController implements Initializable {
         TypeUsers typeUsers3 = new TypeUsers(3, "Gestor de Compras");
         TypeUsers typeUsers4 = new TypeUsers(4, "Gestor de Stock");
         TypeUsers typeUsers5 = new TypeUsers(5, "Gestor de Vendas");
-        TypeUsers typeUsers6 = new TypeUsers(6, "Responsável pelo Armazém");
-        TypeUsers typeUsers7 = new TypeUsers(7, "Responsável pela Qualidade");
+        //TypeUsers typeUsers6 = new TypeUsers(6, "Responsável pelo Armazém");
+        //TypeUsers typeUsers7 = new TypeUsers(7, "Responsável pela Qualidade");
         TypeUsers typeUsers8 = new TypeUsers(8, "Cliente");
         // - - - - sum items in list - - - - //
         typeUsersList.add(typeUsers1);
@@ -173,8 +173,8 @@ public class CreateUserController implements Initializable {
         typeUsersList.add(typeUsers3);
         typeUsersList.add(typeUsers4);
         typeUsersList.add(typeUsers5);
-        typeUsersList.add(typeUsers6);
-        typeUsersList.add(typeUsers7);
+        //typeUsersList.add(typeUsers6);
+        //typeUsersList.add(typeUsers7);
         typeUsersList.add(typeUsers8);
 
         obsList = FXCollections.observableArrayList(typeUsersList);

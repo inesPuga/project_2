@@ -135,6 +135,9 @@
               <h5 th:text="${list_op.nome}"> </h5>
               <br>
               <div class="price_box">
+                <h6 class="price_heading">
+                  [[${list_op.precoactvenda}]] €
+                </h6>
                 <a class="price_heading" th:href="@{/remove(idu=${user.iduser}, ido=${order.codencomenda}, idp=${list_op.codtipoconserva})}">
                   -
                 </a>
