@@ -50,10 +50,13 @@
           .quote_btn-container {
             margin-left: auto;
           }
+          .quote_btn-container .name {
+            font-weight: bold;
+          }
         </style>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="quote_btn-container">
-              <a href="#" class="nav-link">
+              <a href="#" class="name">
                 Encomenda feita por [[${user.username}]]
               </a>
               <a href="#" th:href="@{/furniture(id=${user.iduser})}">
@@ -135,6 +138,13 @@
                 <h6 class="price_heading">
                   [[${list_op.precoactvenda}]] €
                 </h6>
+                <a class="price_heading" th:href="@{/remove(idu=${user.iduser}, ido=${order.codencomenda}, idp=${list_op.codtipoconserva})}">
+                  -
+                </a>
+                <a class="price_heading">
+                  +
+                </a>
+
               </div>
             </div>
           </div>
